@@ -51,8 +51,16 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 
-const index = require('./routes/index');
-app.use('/', index);
+const index =       require('./routes/index');
+const auth =        require('./routes/auth');
+const stylist =     require('./routes/stylist');
+const technique =   require('./routes/technique');
+const appointment = require('./routes/appointment');
 
+app.use('/', index);
+app.use('/api/auth',auth);
+app.use('/api/stylist',stylist);
+app.use('/api/technique',technique);
+app.use('/api/appointment',appointment);
 
 module.exports = app;
