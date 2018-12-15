@@ -2,9 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import '../node_modules/uikit/dist/css/uikit.css';
+import '../node_modules/uikit/dist/js/uikit.min';
+import '../node_modules/uikit/dist/js/uikit-icons.min'
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter} from "react-router-dom";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const WithRouter = () => (
+    <BrowserRouter>
+        <App/>
+    </BrowserRouter>
+);
+
+ReactDOM.render(<WithRouter />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
