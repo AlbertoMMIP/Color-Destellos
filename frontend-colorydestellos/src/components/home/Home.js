@@ -1,11 +1,9 @@
     import React, {Component} from 'react';
-    import NavBar from "./NavBar";
 
     class Home extends Component{
         render() {
             return(
                 <div className="tm-page">
-                    <NavBar/>
                     <div className="uk-section-primary uk-section uk-padding-remove-vertical">
                         <div className="uk-grid-margin uk-grid uk-grid-stack" data-uk-grid="">
                             <div className="uk-width-1-1@m uk-first-column">

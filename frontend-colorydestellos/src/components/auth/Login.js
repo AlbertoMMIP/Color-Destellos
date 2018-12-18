@@ -1,23 +1,22 @@
 import React, {Component} from 'react';
-import NavBar from "../home/NavBar";
-import '../../'
+import '../../../node_modules/uikit/dist/js/uikit-icons.min';
 
 class Login extends Component{
     render(){
         return(
-            <div>
-                <NavBar/>
+            <div  >
+                <h1>Color & Destellos</h1>
                 <form>
                     <div className="uk-margin">
                         <div className="uk-inline">
-                            <span className="uk-form-icon" data-uk-icon="icon: user"></span>
+                            <span className="uk-form-icon" data-uk-icon="icon: user"/>
                             <input className="uk-input" type="text"/>
                         </div>
                     </div>
 
                     <div className="uk-margin">
                         <div className="uk-inline">
-                            <span className="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: lock"></span>
+                            <span className="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: lock"/>
                             <input className="uk-input" type="text"/>
                         </div>
                     </div>
@@ -26,7 +25,6 @@ class Login extends Component{
                             <button className="uk-button uk-button-default" >Entrar</button>
                         </div>
                     </div>
-                    <span data-uk-icon="heart"></span>
                 </form>
             </div>
         );

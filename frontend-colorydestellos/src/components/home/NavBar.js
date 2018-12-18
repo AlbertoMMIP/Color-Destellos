@@ -18,7 +18,7 @@ class NavBar extends Component{
                             </a>
                         </div>
                         <div className="uk-navbar-center">
-                            <a className="uk-navbar-item uk-logo" href="/Home"><img src="images/logo.png" alt="Color"/> </a>
+                            <a className="uk-navbar-item uk-logo" href="/"><img src="images/logo.png" alt="Color"/> </a>
                         </div>
                     </nav>
                     <div id="tm-mobile" className="uk-modal-full uk-modal" data-uk-modal="">
@@ -35,7 +35,7 @@ class NavBar extends Component{
                                     <div>
                                         <div className="uk-panel" id="module-0">
                                             <ul className="uk-nav uk-nav-primary uk-nav-center">
-                                                <li className="uk-active"><a href="/Home">Inicio</a></li>
+                                                <li className="uk-active"><a href="/">Inicio</a></li>
                                                 <li><a href="/Home">Acerca de</a></li>
                                                 <li><a href="/Home">Técnicas</a></li>
                                                 <li><a href="/Home">Citas</a></li>
@@ -61,14 +61,14 @@ class NavBar extends Component{
                             <div className = "uk-container" >
                                 <nav className = "uk-navbar"  data-uk-navbar = "{&quot;align&quot;:&quot;center&quot;,&quot;boundary&quot;:&quot;!.uk-navbar-container&quot;}" >
                                     <div className = "uk-navbar-left" >
-                                        <a href = "https://demo.yootheme.com/themes/joomla/2017/florence" className = "uk-navbar-item uk-logo" >LOGO
+                                        <a href = "/" className = "uk-navbar-item uk-logo" >LOGO
                                             {/*<img src = "images/Logo.png" width="250px" height="auto" alt = "Color" />
                                             <img src = "images/Logo.png" width="250px" height="auto" className = "uk-logo-inverse" alt = "Color" />*/}
                                         </a>
                                     </div>
                                     <div className="uk-navbar-center">
                                         <ul className="uk-navbar-nav">
-                                            <li className="uk-active"><a href = "/Home" > Inicio </a></li>
+                                            <li className="uk-active"><a href = "/" > Inicio </a></li>
                                             <li><a href = "/Home" > Acerca de </a></li>
                                             <li><a href = "/Home" > Técnicas </a></li>
                                             <li><a href = "/Home" > Citas </a></li>
