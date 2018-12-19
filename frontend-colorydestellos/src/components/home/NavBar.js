@@ -18,7 +18,9 @@ class NavBar extends Component{
                             </a>
                         </div>
                         <div className="uk-navbar-center">
-                            <a className="uk-navbar-item uk-logo" href="/"><img src="images/logo.png" alt="Color"/> </a>
+                            <a className="uk-navbar-item uk-logo" href="/">
+                                LOGO
+                            </a>
                         </div>
                     </nav>
                     <div id="tm-mobile" className="uk-modal-full uk-modal" data-uk-modal="">
@@ -61,9 +63,9 @@ class NavBar extends Component{
                             <div className = "uk-container" >
                                 <nav className = "uk-navbar"  data-uk-navbar = "{&quot;align&quot;:&quot;center&quot;,&quot;boundary&quot;:&quot;!.uk-navbar-container&quot;}" >
                                     <div className = "uk-navbar-left" >
-                                        <a href = "/" className = "uk-navbar-item uk-logo" >LOGO
-                                            {/*<img src = "images/Logo.png" width="250px" height="auto" alt = "Color" />
-                                            <img src = "images/Logo.png" width="250px" height="auto" className = "uk-logo-inverse" alt = "Color" />*/}
+                                        <a href = "/" className = "uk-navbar-item uk-logo" >
+                                            {<img src = "images/logobw.png" width="150px" height="auto" alt = "Color" />
+                                                /*<img src = "images/Logo.png" width="250px" height="auto" className = "uk-logo-inverse" alt = "Color" />*/}
                                         </a>
                                     </div>
                                     <div className="uk-navbar-center">

@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import '../node_modules/uikit/dist/css/uikit.css';
-import '../node_modules/uikit/dist/js/uikit.min';
-import '../node_modules/uikit/dist/js/uikit-icons.min'
+import 'uikit/dist/css/uikit.min.css';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter} from "react-router-dom";
+import UIkit from 'uikit';
+import Icons from 'uikit/dist/js/uikit-icons';
+// loads the Icon plugin
+UIkit.use(Icons);
 
 const WithRouter = () => (
     <BrowserRouter>

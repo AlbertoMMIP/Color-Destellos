@@ -1,28 +1,51 @@
 import React, {Component} from 'react';
-import '../../../node_modules/uikit/dist/js/uikit-icons.min';
+import {login} from "../../services";
 
 class Login extends Component{
+
+    constructor(){
+        super();
+        this.state = {
+            user:{
+                email:"",
+                password:""
+            }
+        }
+    }
+
+    handleChange = (e) => {
+        const {user} = this.state;
+        let field = e.target.name;
+        user[field] = e.target.value;
+        this.setState({user});
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        login(this.state.user, this.props.history);
+    }
+
     render(){
+        let {email, password} = this.state;
         return(
             <div  >
-                <h1>Color & Destellos</h1>
-                <form>
+
+                <form onSubmit={this.handleSubmit}>
                     <div className="uk-margin">
                         <div className="uk-inline">
-                            <span className="uk-form-icon" data-uk-icon="icon: user"/>
-                            <input className="uk-input" type="text"/>
+                            <span className="uk-form-icon" uk-icon="icon: user"/>
+                            <input className="uk-input" type="email" onChange={this.handleChange} value={email} name="email" />
                         </div>
                     </div>
-
                     <div className="uk-margin">
                         <div className="uk-inline">
                             <span className="uk-form-icon uk-form-icon-flip" data-uk-icon="icon: lock"/>
-                            <input className="uk-input" type="text"/>
+                            <input className="uk-input" type="password" onChange={this.handleChange} value={password} name="password" />
                         </div>
                     </div>
                     <div className="uk-margin">
                         <div className="uk-inline">
-                            <button className="uk-button uk-button-default" >Entrar</button>
+                            <button className="uk-button uk-button-default" type="submit" >Entrar</button>
                         </div>
                     </div>
                 </form>

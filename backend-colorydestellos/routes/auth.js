@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 router.post("/login", async(req,res) => {
   const user = await User.findOne({email:req.body.email});
-  if(!user) return res.status(404).json({msg:"Email no registrado"});
+  if(!user) return res.status(500).json({msg:"Email no registrado"});
 
   let validPass = bcrypt.compareSync(req.body.password,user.password);
 
