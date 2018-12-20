@@ -1,8 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class NavBar extends Component{
-    render() {
-        return(
+const NavBar = ({user}) =>(
             <div>
                 <div className="tm-header-mobile uk-hidden@l">
                     <nav className="uk-navbar-container uk-navbar" data-uk-navbar="">
@@ -69,20 +67,36 @@ class NavBar extends Component{
                                         </a>
                                     </div>
                                     <div className="uk-navbar-center">
-                                        <ul className="uk-navbar-nav">
-                                            <li className="uk-active"><a href = "/" > Inicio </a></li>
-                                            <li><a href = "/Home" > Acerca de </a></li>
-                                            <li><a href = "/Home" > Técnicas </a></li>
-                                            <li><a href = "/Home" > Citas </a></li>
-                                            <li><a href="/login">Iniciar</a></li>
-                                            <li>
-                                                <div className="uk-navbar-item">
-                                                    <form>
-                                                        <input className="uk-input uk-form-width-small" type="text" placeholder="Consulta tu cita"/>
-                                                    </form>
-                                                </div>
-                                            </li>
-                                        </ul>
+                                        {user === "ADMIN" ?
+                                            <ul className="uk-navbar-nav">
+                                                <li className="uk-active"><a href = "/" > Estilistas </a></li>
+                                                <li><a href = "/Home" > Técnicas </a></li>
+                                                <li><a href = "/Home" > Estadisticas </a></li>
+                                                <li><a href = "/" > Salir </a></li>
+                                            </ul> :
+                                            user === "ESTILISTA" ?
+                                                <ul className="uk-navbar-nav">
+                                                    <li className="uk-active"><a href = "/" > Portafolio </a></li>
+                                                    <li><a href = "/Home" > Agenda </a></li>
+                                                    <li><a href = "/Home" > Perfil </a></li>
+                                                    <li><a href = "/Home" > Historial </a></li>
+                                                    <li><a href = "/" > Salir </a></li>
+                                                </ul> :
+                                                    <ul className="uk-navbar-nav">
+                                                        <li className="uk-active"><a href = "/" > Inicio </a></li>
+                                                        <li><a href = "/Home" > Acerca de </a></li>
+                                                        <li><a href = "/Home" > Técnicas </a></li>
+                                                        <li><a href = "/Home" > Citas </a></li>
+                                                        <li><a href="/login">Iniciar</a></li>
+                                                        <li>
+                                                            <div className="uk-navbar-item">
+                                                                <form>
+                                                                    <input className="uk-input uk-form-width-small" type="text" placeholder="Consulta tu cita"/>
+                                                                </form>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                        }
                                     </div>
                                     <div className="uk-navbar-right">
                                         <div className="uk-navbar-item" id="module-tm-1">
@@ -118,7 +132,5 @@ class NavBar extends Component{
                 <div className="system-message-container"></div>
             </div>
         );
-    }
-}
 
 export default NavBar;

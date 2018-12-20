@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {login} from "../../services";
+import NavBar from "../home/NavBar";
 
 class Login extends Component{
 
@@ -29,7 +30,7 @@ class Login extends Component{
         let {email, password} = this.state;
         return(
             <div  >
-
+                <NavBar/>
                 <form onSubmit={this.handleSubmit}>
                     <div className="uk-margin">
                         <div className="uk-inline">

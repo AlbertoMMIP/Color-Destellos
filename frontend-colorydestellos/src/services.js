@@ -8,13 +8,16 @@ export const login = (auth, history) => {
     axios.post(`${base_url}/auth/login`,auth)
         .then(res => {
             localStorage.setItem("token",res.data.token);
-            localStorage.setItem(("user"),JSON.stringify(res.data.user));
-            history.push("/Home");
+            localStorage.setItem(("name"),JSON.stringify(res.data.user.name));
+            if(res.data.user.rol === "ADMIN") history.push("/Stylists");
+            else history.push("/agenda");
+
+
         })
         .catch(err => {
             UIkit.notification({
                 status: "danger",
-                message: `<span uk-icon='icon: warning'></span>     ${err.response.data.msg}`
+                message: `<span uk-icon='icon: warning'></span> ${err.response.data.msg}`
             });
         })
 };
