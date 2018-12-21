@@ -3,7 +3,7 @@ import {Switch,Route} from "react-router-dom";
 import Home from "./components/home/Home";
 import Login from "./components/auth/Login";
 import Stylists from "./components/admin/Stylists";
-import Agenda from "./components/Stylist/Agenda";
+import Agenda from "./components/stylist/Agenda";
 
 const Router = () => (
     <Switch>
