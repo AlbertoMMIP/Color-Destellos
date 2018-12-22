@@ -69,9 +69,9 @@ const NavBar = ({user}) =>(
                                     <div className="uk-navbar-center">
                                         {user === "ADMIN" ?
                                             <ul className="uk-navbar-nav">
-                                                <li className="uk-active"><a href = "/" > Estilistas </a></li>
-                                                <li><a href = "/Home" > Técnicas </a></li>
-                                                <li><a href = "/Home" > Estadisticas </a></li>
+                                                <li className="uk-active"><a href = "/stylists" > Estilistas </a></li>
+                                                <li><a href = "/techniques" > Técnicas </a></li>
+                                                <li><a href = "/statistics" > Estadisticas </a></li>
                                                 <li><a href = "/" > Salir </a></li>
                                             </ul> :
                                             user === "ESTILISTA" ?

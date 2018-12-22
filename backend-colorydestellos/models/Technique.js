@@ -8,6 +8,11 @@ const techniqueSchema = new Schema({
     type:       [String]
   },
   obsolet:      Boolean
+},{
+  timestamps:{
+    createdAt: "created_at",
+    updatedAt: "updated_at"
+  }
 });
 
 module.exports = mongoose.model('Technique',techniqueSchema);

@@ -21,3 +21,7 @@ export const login = (auth, history) => {
             });
         })
 };
+
+export const getTechniques =  () => {
+    return axios.get(`${base_url}/technique/find`);
+}
