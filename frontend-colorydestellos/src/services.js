@@ -17,11 +17,36 @@ export const login = (auth, history) => {
         .catch(err => {
             UIkit.notification({
                 status: "danger",
-                message: `<span uk-icon='icon: warning'></span> ${err.response.data.msg}`
+                message: `<span data-uk-icon='icon: warning'></span> ${err.response.data.msg}`
             });
         })
 };
 
 export const getTechniques =  () => {
     return axios.get(`${base_url}/technique/find`);
+};
+
+export const createTechnique = (form) =>{
+    let formData = new FormData();
+    Object.keys(form).forEach(key => {
+        formData.append(key, form[key]);
+    });
+    axios.post(`${base_url}/technique/create`,formData, {
+            headers: {
+                "Content-Type": "multipart-form-data"
+            }
+        })
+        .then(() => {
+            UIkit.notification({
+                status: "success",
+                message: "Técnica creada correctamente"
+            });
+        })
+        .catch(err => {
+            UIkit.notification({
+                status: "danger",
+                message: err.response.data.msg
+            });
+        })
+
 }

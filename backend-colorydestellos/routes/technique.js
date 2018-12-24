@@ -1,13 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const Technique = require('../models/Technique');
+const upload = require('../helpers/multer');
 
 
-router.post("/create", (req,res) =>{
+router.post("/create", upload.single("imgs_url"), (req,res) =>{
     let name        = req.body.name,
         description = req.body.description,
-        obsolet     = req.body.obsolet,
-        imgs_url    = req.body.imgs;
+        obsolet     = false,
+        imgs_url    = "";
+        if(req.file) imgs_url = req.file.url;
+        else{
+            res.status(500).json({msg:"Se necesita una imagen como referencia"});
+        }
     
     Technique.create({name,description,obsolet,imgs_url})
             .then(() =>{
