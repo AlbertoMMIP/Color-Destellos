@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NavBar from "../home/NavBar";
 import {TechniqueCard} from "../common/TechniqueCard";
 import {createTechnique, getTechniques} from '../../services'
+import UIkit from "uikit";
 
 class Techniques extends  Component{
 
@@ -14,14 +15,19 @@ class Techniques extends  Component{
                 imgs_url : ""
             },
             techniques:[],
-            addTech:false
+            addTech:false,
+            user:"CLIENTE"
         }
     }
 
     componentWillMount() {
+        let {user} = this.state;
+        user = localStorage.getItem("rol") === null ? "CLIENTE" : localStorage.getItem("rol");
+        user = user.replace('"','').replace('"','');
+        console.log(user);
         getTechniques()
             .then(techs => {
-                this.setState({techniques: techs.data.techs})
+                this.setState({techniques: techs.data.techs,user})
             })
     };
     showForm = () => {
@@ -44,23 +50,41 @@ class Techniques extends  Component{
         this.setState({technique});
         console.log(this.state.technique);
 
-        createTechnique(this.state.technique);
-        getTechniques()
-            .then(techs => {
-                this.setState({techniques: techs.data.techs})
+        createTechnique(this.state.technique)
+            .then(() => {
+                UIkit.notification({
+                    status: "success",
+                    message: "Técnica creada correctamente"
+                });
+                getTechniques()
+                    .then(techs => {
+                        this.setState({techniques: techs.data.techs})
+                    })
+
+                this.showForm();
+            })
+            .catch(err => {
+                UIkit.notification({
+                    status: "danger",
+                    message: err.response.data.msg
+                });
             })
     };
 
 
     render(){
-        let {techniques,addTech} = this.state;
+        let {techniques,addTech,user} = this.state;
         return(
 
             <div>
-               <NavBar user="ADMIN"/>
-                <div className="uk-section-default">
-                    <button className="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" onClick={this.showForm} >Agregar Técnica</button>
-                </div>
+               <NavBar user={user}/>
+                {user === "ADMIN" ?
+                    <div className="uk-section-default">
+                        <button className="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" onClick={this.showForm} >Agregar Técnica</button>
+                    </div> :
+                    null
+                }
+
                 {addTech ?
                     <div className="uk-section">
                         <div className="uk-container">

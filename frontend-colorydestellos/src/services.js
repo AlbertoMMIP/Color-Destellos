@@ -9,6 +9,7 @@ export const login = (auth, history) => {
         .then(res => {
             localStorage.setItem("token",res.data.token);
             localStorage.setItem(("name"),JSON.stringify(res.data.user.name));
+            localStorage.setItem(("rol"),JSON.stringify(res.data.user.rol));
             if(res.data.user.rol === "ADMIN") history.push("/Stylists");
             else history.push("/agenda");
 
@@ -31,22 +32,9 @@ export const createTechnique = (form) =>{
     Object.keys(form).forEach(key => {
         formData.append(key, form[key]);
     });
-    axios.post(`${base_url}/technique/create`,formData, {
+    return axios.post(`${base_url}/technique/create`,formData, {
             headers: {
                 "Content-Type": "multipart-form-data"
             }
-        })
-        .then(() => {
-            UIkit.notification({
-                status: "success",
-                message: "Técnica creada correctamente"
-            });
-        })
-        .catch(err => {
-            UIkit.notification({
-                status: "danger",
-                message: err.response.data.msg
-            });
-        })
-
+        });
 }

@@ -85,7 +85,7 @@ const NavBar = ({user}) =>(
                                                     <ul className="uk-navbar-nav">
                                                         <li className="uk-active"><a href = "/" > Inicio </a></li>
                                                         <li><a href = "/Home" > Acerca de </a></li>
-                                                        <li><a href = "/Home" > Técnicas </a></li>
+                                                        <li><a href = "/techniques" > Técnicas </a></li>
                                                         <li><a href = "/Home" > Citas </a></li>
                                                         <li><a href="/login">Iniciar</a></li>
                                                         <li>

@@ -1,7 +1,16 @@
     import React, {Component} from 'react';
     import NavBar from "./NavBar";
 
+
+
     class Home extends Component{
+
+        componentWillMount() {
+            localStorage.removeItem('rol');
+            localStorage.removeItem('name');
+            localStorage.removeItem('token');
+        }
+
         render() {
             return(
                 <div className="tm-page">
