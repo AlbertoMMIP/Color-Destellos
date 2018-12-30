@@ -84,7 +84,7 @@
                                                             data-style="transform: translate3d(-250px, 0px, 0px);"><span>Modernos estilos de uñas</span>
                                                         </h1>
                                                         <p><a className="el-link uk-button uk-button-default"
-                                                              href="/Tecnicas"
+                                                              href="/techniques"
                                                               data-uk-slideshow-parallax="y: -60,0,190;"
                                                               data-style="transform: translate3d(0px, 190px, 0px);">Revisar las Técnicas</a>
                                                         </p>
@@ -130,6 +130,13 @@
                                                 </div>
                                             </li>
                                         </ul>
+                                        <div className="uk-position-bottom-center uk-position-large uk-visible@s">
+                                            <ul className="uk-thumbnav">
+                                                <li uk-slideshow-item="0"><a href="#"><img src="https://images.unsplash.com/photo-1501459277917-04a80f948092?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb" width="100" alt=""/></a></li>
+                                                <li uk-slideshow-item="1"><a href="#"><img src="https://images.unsplash.com/photo-1471336199076-1bea7bdb30ba?ixlib=rb-1.2.1&auto=format&fit=crop&w=932&q=80" width="100" alt=""/></a></li>
+                                                <li uk-slideshow-item="2"><a href="#"><img src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&dpr=1&auto=format&fit=crop&w=1000&q=80&cs=tinysrgb" width="100" alt=""/></a></li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
