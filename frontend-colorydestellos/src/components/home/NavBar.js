@@ -16,9 +16,7 @@ const NavBar = ({user}) =>(
                             </a>
                         </div>
                         <div className="uk-navbar-center">
-                            <a className="uk-navbar-item uk-logo" href="/">
-                                LOGO
-                            </a>
+                            <a className="uk-navbar-item uk-logo" href=""><img src="images/logobw.png" width="150px" height="auto" alt="Color"/></a>
                         </div>
                     </nav>
                     <div id="tm-mobile" className="uk-modal-full uk-modal" data-uk-modal="">
@@ -36,10 +34,10 @@ const NavBar = ({user}) =>(
                                         <div className="uk-panel" id="module-0">
                                             <ul className="uk-nav uk-nav-primary uk-nav-center">
                                                 <li className="uk-active"><a href="/">Inicio</a></li>
-                                                <li><a href="/Home">Acerca de</a></li>
-                                                <li><a href="/Home">Técnicas</a></li>
-                                                <li><a href="/Home">Citas</a></li>
-                                                <li><a href="/login">Iniciar</a></li>
+                                                <li><a href="/#About">Acerca de</a></li>
+                                                <li><a href="/techniques">Técnicas</a></li>
+                                                <li><a href="/appoitment">Citas</a></li>
+                                                {/*<li><a href="/login">Iniciar</a></li>*/}
                                                 <li>
                                                     <div className="uk-navbar-item">
                                                         <form>
@@ -84,9 +82,9 @@ const NavBar = ({user}) =>(
                                                 </ul> :
                                                     <ul className="uk-navbar-nav">
                                                         <li className="uk-active"><a href = "/" > Inicio </a></li>
-                                                        <li><a href = "/Home" > Acerca de </a></li>
+                                                        <li><a href = "#About" > Acerca de </a></li>
                                                         <li><a href = "/techniques" > Técnicas </a></li>
-                                                        <li><a href = "/Home" > Citas </a></li>
+                                                        <li><a href = "/appoitment" > Citas </a></li>
                                                         <li><a href="/login">Iniciar</a></li>
                                                         <li>
                                                             <div className="uk-navbar-item">

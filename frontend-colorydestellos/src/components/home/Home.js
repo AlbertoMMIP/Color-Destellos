@@ -1,5 +1,8 @@
     import React, {Component} from 'react';
     import NavBar from "./NavBar";
+    import {About} from "./About";
+    import {Instruccions} from "./Instrucctions";
+    import {Footer} from "./Footer";
 
 
 
@@ -142,6 +145,9 @@
                             </div>
                         </div>
                     </div>
+                    <div id="About"> <About/> </div>
+                    <div id="Instruccions"> <Instruccions/> </div>
+                    <div id="Footer"> <Footer/> </div>
                 </div>
             );
         }

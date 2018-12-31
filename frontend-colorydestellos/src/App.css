@@ -4,6 +4,7 @@
   box-sizing: border-box;
   color: #222;
   text-shadow: none;
+  font-family: 'Poppins', sans-serif;
 }
 .App {
   text-align: center;
@@ -27,10 +28,6 @@
 
 .App-link {
   color: #61dafb;
-}
-
-.tm-page{
-  position: relative;
 }
 
 @keyframes App-logo-spin {
