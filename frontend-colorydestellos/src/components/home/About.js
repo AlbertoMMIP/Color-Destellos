@@ -28,7 +28,7 @@ export const About = () => (
                         la necesidad de transladarse de un punto a otro.</p>
                         <div className="uk-grid-small uk-child-width-auto" data-uk-grid>
                             <div>
-                                <a className="uk-button uk-button-text" href="#">Agenda una cita</a>
+                                <a className="uk-button uk-button-text" href="/appoitment">Agenda una cita</a>
                             </div>
                             <div>
                                 <a className="uk-button uk-button-text" href="#Instruccions">Instrucciones</a>

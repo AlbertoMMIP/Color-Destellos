@@ -26,6 +26,7 @@ const appointmentSchema = new Schema({
     },
     coordinates: [Number]
   },
+  desingURL:    String,
   appointment:  Date,
   hour:         Number,
   price:        Number,

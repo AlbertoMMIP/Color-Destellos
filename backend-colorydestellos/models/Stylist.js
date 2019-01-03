@@ -23,8 +23,8 @@ const stylistSchema = new Schema({
     price:    Number
   }],
   businessHours:{
-    start:    Number,
-    end:      Number
+    start:    String,
+    end:      String
   },
   status: {
     type: String,

@@ -1,33 +1,29 @@
 import React from "react";
 
-export const StylistCard = () => (
+export const StylistCard = ({user,img}) => (
     <div>
-        <div className="uk-card uk-card-default">
-            <div className="uk-card-header">
-                <div className="uk-grid-small uk-flex-middle" data-uk-grid>
-                    <div className="uk-width-auto">
-                            <img className="uk-border-circle" width="40" height="40" src="https://images.unsplash.com/photo-1475636729227-1043bc86662b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1650&q=80" alt="img"/>
-                    </div>
-                    <div className="uk-width-expand">
-                        <h3 className="uk-card-title uk-margin-remove-bottom">Name Last NameLong </h3>
-                        <p className="uk-text-meta uk-margin-remove-top">
-                            <time dateTime="2016-04-01T19:00">April 01, 2016</time>
+        <div className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" data-uk-grid>
+            <div className="uk-card-media-left uk-cover-container">
+                {img ? <img src={img} alt="" data-uk-cover/>: <img src="https://images.unsplash.com/photo-1522337094846-8a818192de1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=639&q=80" alt="" data-uk-cover/>}
+                <canvas width="400" height="200"></canvas>
+            </div>
+            <div>
+                <div className="uk-card-body">
+                    <h3 className="uk-card-title">Nombre</h3>
+                        {user === "ADMIN" ?
+                        <p data-uk-margin>
+                            <a className="uk-button uk-button-default uk-button-group" href="#">Ver Perfil</a>
+                            <a className="uk-button uk-button-primary uk-button-group" href="#">Aceptar</a>
+                            <a className="uk-button uk-button-default uk-button-group" href="#">Dar de Baja</a>
+                        </p> :
+                        <p data-uk-margin>
+                            <a className="uk-button uk-button-default" href="#">Portafolio</a>
+                            <a className="uk-button uk-button-primary" href="#Schedule">Agendar</a>
                         </p>
-                    </div>
+                        }
                 </div>
             </div>
-            <div className="uk-card-body">
-                <ul>
-                    <li>Experiencia</li>
-                    <li>Correo</li>
-                    <li>Teléfono</li>
-                </ul>
-            </div>
-            <div className="uk-card-footer">
-                <a href="/stylists" className="uk-button uk-button-text">Aceptar</a>
-            </div>
         </div>
-
     </div>
 
 

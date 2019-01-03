@@ -4,7 +4,7 @@ export const Resume = () => (
     <div className="uk-width-expand@l uk-grid-item-match uk-flex-middle">
         <div className="uk-panel">
             <div className="uk-margin uk-margin-auto-center uk-text-left@l uk-text-left uk-card uk-card-default uk-card-large uk-card-body uk-scrollspy-inview uk-animation-fade" data-uk-scrollspy-class="" data-style="">
-                <div className="el-meta uk-margin uk-h5 uk-margin-remove-adjacent">Haz tu cita</div>
+                <div className="el-meta uk-margin uk-h5 uk-margin-remove-adjacent">Haz tu cita con:</div>
                 <h2 className="el-title uk-margin uk-h1"> Tu estilista </h2>
                 <div className="el-content uk-margin">* Servicio a domicilio incluye un costo extra
                     <hr className="uk-margin-large-top uk-margin-large-bottom"/>
@@ -30,6 +30,13 @@ export const Resume = () => (
                                        placeholder="email@correo.com"/>
                             </div>
                         </div>
+                        <div className="uk-margin">
+                            <label className="uk-form-label" htmlFor="form-horizontal-text">Fecha</label>
+                            <div className="uk-form-controls">
+                                <input type="text" className="uk-input" data-uk-datepicker="{format:'DD.MM.YYYY'}"/>
+                            </div>
+                        </div>
+
                         <div className="uk-margin">
                             <label className="uk-form-label" htmlFor="form-horizontal-select">Escoge tu Técnica</label>
                             <div className="uk-form-controls">

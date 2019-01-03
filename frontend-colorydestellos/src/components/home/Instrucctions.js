@@ -44,7 +44,8 @@ export const Instruccions = () => (
                         </div>
                     </div>
                 </div>
-                <p><a className="uk-button btn" href="#team" data-uk-scroll="">Agenda tu cita</a></p>
+
+                <a className="uk-button uk-button-default uk-margin" href="/appoitment" data-uk-scroll="">Agenda tu cita</a>
             </div>
             <div className="tm-section-title uk-position-center-left uk-position-medium uk-text-nowrap uk-visible@xl">
                 <div className="tm-rotate-180">Save up to 45%</div>

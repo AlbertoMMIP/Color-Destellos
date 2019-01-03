@@ -33,7 +33,7 @@ const NavBar = ({user}) =>(
                                     <div>
                                         <div className="uk-panel" id="module-0">
                                             <ul className="uk-nav uk-nav-primary uk-nav-center">
-                                                <li className="uk-active"><a href="/">Inicio</a></li>
+                                                <li><a href="/">Inicio</a></li>
                                                 <li><a href="/#About">Acerca de</a></li>
                                                 <li><a href="/techniques">Técnicas</a></li>
                                                 <li><a href="/appoitment">Citas</a></li>
@@ -51,7 +51,7 @@ const NavBar = ({user}) =>(
                         </div>
                     </div>
                 </div>
-                <div className="tm-header uk-visible@l tm-header-transparent" data-uk-header = "">
+                <div className="uk-visible@l tm-header-transparent" data-uk-header = "">
                     <div data-uk-sticky = "" data-media = "@l"  data-cls-active = "uk-navbar-sticky" data-sel-target = ".uk-navbar-container" className="uk-sticky" data-style = "" >
                         <div className = "uk-navbar-container uk-navbar-transparent uk-dark" >
                             <div className = "uk-container" >
@@ -65,21 +65,21 @@ const NavBar = ({user}) =>(
                                     <div className="uk-navbar-center">
                                         {user === "ADMIN" ?
                                             <ul className="uk-navbar-nav">
-                                                <li className="uk-active"><a href = "/stylists" > Estilistas </a></li>
+                                                <li><a href = "/stylists" > Estilistas </a></li>
                                                 <li><a href = "/techniques" > Técnicas </a></li>
                                                 <li><a href = "/statistics" > Estadisticas </a></li>
                                                 <li><a href = "/" > Salir </a></li>
                                             </ul> :
                                             user === "ESTILISTA" ?
                                                 <ul className="uk-navbar-nav">
-                                                    <li className="uk-active"><a href = "/" > Portafolio </a></li>
+                                                    <li><a href = "/" > Portafolio </a></li>
                                                     <li><a href = "/Home" > Agenda </a></li>
                                                     <li><a href = "/Home" > Perfil </a></li>
                                                     <li><a href = "/Home" > Historial </a></li>
                                                     <li><a href = "/" > Salir </a></li>
                                                 </ul> :
                                                     <ul className="uk-navbar-nav">
-                                                        <li className="uk-active"><a href = "/" > Inicio </a></li>
+                                                        <li><a href = "/" > Inicio </a></li>
                                                         <li><a href = "/#About" > Acerca de </a></li>
                                                         <li><a href = "/techniques" > Técnicas </a></li>
                                                         <li><a href = "/appoitment" > Citas </a></li>
