@@ -15,7 +15,7 @@ const NavBar = ({user}) =>(
                                 </div>
                             </a>
                         </div>
-                        <div className="uk-navbar-center">
+                        <div className="uk-navbar-right">
                             <a className="uk-navbar-item uk-logo" href=""><img src="images/logobw.png" width="150px" height="auto" alt="Color"/></a>
                         </div>
                     </nav>
@@ -39,11 +39,9 @@ const NavBar = ({user}) =>(
                                                 <li><a href="/appoitment">Citas</a></li>
                                                 {/*<li><a href="/login">Iniciar</a></li>*/}
                                                 <li>
-                                                    <div className="uk-navbar-item">
-                                                        <form>
-                                                            <input className="uk-input uk-form-width-small" type="text" placeholder="Consulta tu cita"/>
-                                                        </form>
-                                                    </div>
+                                                    <form className="uk-search uk-search-navbar uk-width-1-1">
+                                                        <input className="uk-search-input" type="search" placeholder="Consulta tu cita" autoFocus/>
+                                                    </form>
                                                 </li>
                                             </ul>
                                         </div>
@@ -82,43 +80,21 @@ const NavBar = ({user}) =>(
                                                 </ul> :
                                                     <ul className="uk-navbar-nav">
                                                         <li className="uk-active"><a href = "/" > Inicio </a></li>
-                                                        <li><a href = "#About" > Acerca de </a></li>
+                                                        <li><a href = "/#About" > Acerca de </a></li>
                                                         <li><a href = "/techniques" > Técnicas </a></li>
                                                         <li><a href = "/appoitment" > Citas </a></li>
                                                         <li><a href="/login">Iniciar</a></li>
-                                                        <li>
-                                                            <div className="uk-navbar-item">
-                                                                <form>
-                                                                    <input className="uk-input uk-form-width-small" type="text" placeholder="Consulta tu cita"/>
-                                                                </form>
-                                                            </div>
-                                                        </li>
                                                     </ul>
                                         }
                                     </div>
                                     <div className="uk-navbar-right">
-                                        <div className="uk-navbar-item" id="module-tm-1">
-                                            <div className="custom">
-                                                <ul className="uk-grid-small uk-flex-inline uk-flex-middle uk-flex-nowrap uk-grid" data-uk-grid="">
-                                                    <li className="uk-first-column">
-                                                        <a href="https://youtube.com/" className="uk-icon-link uk-icon" data-target="_blank" data-uk-icon="youtube">
-                                                            <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="youtube">
-                                                                <path d="M15,4.1c1,0.1,2.3,0,3,0.8c0.8,0.8,0.9,2.1,0.9,3.1C19,9.2,19,10.9,19,12c-0.1,1.1,0,2.4-0.5,3.4c-0.5,1.1-1.4,1.5-2.5,1.6 c-1.2,0.1-8.6,0.1-11,0c-1.1-0.1-2.4-0.1-3.2-1c-0.7-0.8-0.7-2-0.8-3C1,11.8,1,10.1,1,8.9c0-1.1,0-2.4,0.5-3.4C2,4.5,3,4.3,4.1,4.2 C5.3,4.1,12.6,4,15,4.1z M8,7.5v6l5.5-3L8,7.5z"></path>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="https://instagram.com/" className="uk-icon-link uk-icon" data-target="_blank" data-uk-icon="instagram">
-                                                            <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" data-svg="instagram">
-                                                                <path d="M13.55,1H6.46C3.45,1,1,3.44,1,6.44v7.12c0,3,2.45,5.44,5.46,5.44h7.08c3.02,0,5.46-2.44,5.46-5.44V6.44 C19.01,3.44,16.56,1,13.55,1z M17.5,14c0,1.93-1.57,3.5-3.5,3.5H6c-1.93,0-3.5-1.57-3.5-3.5V6c0-1.93,1.57-3.5,3.5-3.5h8 c1.93,0,3.5,1.57,3.5,3.5V14z"></path>
-                                                                <circle cx="14.87" cy="5.26" r="1.09"></circle>
-                                                                <path d="M10.03,5.45c-2.55,0-4.63,2.06-4.63,4.6c0,2.55,2.07,4.61,4.63,4.61c2.56,0,4.63-2.061,4.63-4.61 C14.65,7.51,12.58,5.45,10.03,5.45L10.03,5.45L10.03,5.45z M10.08,13c-1.66,0-3-1.34-3-2.99c0-1.65,1.34-2.99,3-2.99s3,1.34,3,2.99 C13.08,11.66,11.74,13,10.08,13L10.08,13L10.08,13z"></path>
-                                                            </svg>
-                                                        </a>
-                                                    </li>
-                                                </ul>
+                                        <div>
+                                            <a className="uk-navbar-toggle" uk-icon="icon: search" href="#"/>
+                                            <div className="uk-drop" data-uk-drop="mode: click; pos: left-center; offset: 0">
+                                                <form className="uk-search uk-search-navbar uk-width-1-1">
+                                                    <input className="uk-search-input" type="search" placeholder="Consulta tu cita" autoFocus/>
+                                                </form>
                                             </div>
-
                                         </div>
                                     </div>
                                 </nav>

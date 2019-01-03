@@ -17,7 +17,7 @@ export const About = () => (
         </div>
         <div className="uk-width-expand@m uk-grid-item-match uk-flex-middle uk-flex-first@m uk-first-column">
             <div className="uk-panel">
-                <div className="uk-margin-medium uk-width-large@m uk-text-left@m uk-text-center uk-panel uk-scrollspy-inview uk-animation-fade" data-uk-scrollspy-class="" data-style="">
+                <div className="uk-margin-xlarge uk-width-large@m uk-margin-auto uk-text-left@m uk-text-center uk-scrollspy-inview uk-animation-fade" data-uk-scrollspy-class="" data-style="">
                     <article className="uk-article">
                         <h1 className="uk-article-title"><a className="uk-link-reset" href="">Nuestro Objetivo</a></h1>
                         <p className="uk-article-meta"><a href="/">Color & Destellos</a> Enero 2018.</p>

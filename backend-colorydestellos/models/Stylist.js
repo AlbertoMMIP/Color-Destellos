@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const stylistSchema = new Schema({
+  profile_url:    String,
   id_url:         String,
   homeService:    Boolean,
   experience:     Number,
   businessDays:   [String],
-  imgsWork_url:   [String],
+  imgsBook_url:   [String],
   locationEstablishment:{
     type:{
       type:     String, 

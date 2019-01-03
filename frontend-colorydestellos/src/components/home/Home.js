@@ -24,7 +24,7 @@
                                 <div className="uk-margin uk-text-left@s uk-text-center uk-slideshow" data-uk-slideshow="minHeight: 600; maxHeight: 900; animation: pull; velocity: 1; autoplay: 1;">
                                     <div className="uk-position-relative">
                                         <ul className="uk-slideshow-items">
-                                            <li className="el-item uk-active uk-transition-active">
+                                            <li className="uk-active uk-transition-active">
                                                 <div className="uk-position-cover"
                                                      data-uk-slideshow-parallax="scale: 1,1.2,1.2"
                                                      data-style="transform: scale(1.2);">
@@ -42,23 +42,23 @@
                                                      data-style="background-color: rgb(0, 0, 0); opacity: 0;">
                                                 </div>
                                                 <div className="uk-position-cover uk-flex uk-flex-left uk-flex-middle uk-container uk-section">
-                                                    <div className="el-overlay uk-panel uk-width-xlarge">
-                                                        <div className="el-meta uk-margin uk-h6 uk-margin-remove-adjacent"
+                                                    <div className="uk-overlay uk-overlay-default uk-panel uk-width-xlarge">
+                                                        <div className="uk-margin uk-h6 uk-margin-remove-adjacent"
                                                             data-uk-slideshow-parallax="y: 70,0,-100;"
-                                                             data-style="transform: translate3d(0px, 0px, 0px);">Para las damas
+                                                             data-style="transform: translate3d(0px, -100px, 0px);"><p>Para las damas</p>
                                                         </div>
-                                                        <h1 className="el-title uk-margin uk-heading-primary uk-heading-line"
+                                                        <h1 className="uk-margin uk-heading-primary uk-heading-line"
                                                             data-uk-slideshow-parallax="x: 320,0,-250;"
                                                             data-style="transform: translate3d(0px, 0px, 0px);"><span>Color &amp; Destellos</span>
                                                         </h1>
-                                                        <p><a className="el-link uk-button uk-button-default"
-                                                              href="/Home"
+                                                        <p><a className="uk-button uk-button-primary"
+                                                              href="#About"
                                                               data-uk-slideshow-parallax="y: -60,0,190;"
                                                               data-style="transform: translate3d(0px, 0px, 0px);">Sobre nosotros</a></p>
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li className="el-item" data-style="">
+                                            <li data-style="">
                                                 <div className="uk-position-cover"
                                                      data-uk-slideshow-parallax="scale: 1,1.2,1.2"
                                                      data-style="transform: scale(1.2);">
@@ -77,16 +77,16 @@
                                                      data-style="background-color: rgb(0, 0, 0); opacity: 0;">
                                                 </div>
                                                 <div className="uk-position-cover uk-flex uk-flex-left uk-flex-middle uk-container uk-section">
-                                                    <div className="el-overlay uk-panel uk-width-xlarge">
-                                                        <div className="el-meta uk-margin uk-h6 uk-margin-remove-adjacent"
+                                                    <div className="uk-overlay uk-overlay-default uk-panel uk-width-xlarge">
+                                                        <div className="uk-margin uk-h6 uk-margin-remove-adjacent"
                                                             data-uk-slideshow-parallax="y: 70,0,-100;"
-                                                             data-style="transform: translate3d(0px, -100px, 0px);">Alto estilismo en uñas
+                                                             data-style="transform: translate3d(0px, -100px, 0px);"><p>Alto estilismo en uñas</p>
                                                         </div>
-                                                        <h1 className="el-title uk-margin uk-heading-primary uk-heading-line"
+                                                        <h1 className="uk-margin uk-heading-primary uk-heading-line"
                                                             data-uk-slideshow-parallax="x: 320,0,-250;"
                                                             data-style="transform: translate3d(-250px, 0px, 0px);"><span>Modernos estilos de uñas</span>
                                                         </h1>
-                                                        <p><a className="el-link uk-button uk-button-default"
+                                                        <p><a className="uk-button uk-button-primary"
                                                               href="/techniques"
                                                               data-uk-slideshow-parallax="y: -60,0,190;"
                                                               data-style="transform: translate3d(0px, 190px, 0px);">Revisar las Técnicas</a>
@@ -94,7 +94,7 @@
                                                     </div>
                                                 </div>
                                             </li>
-                                            <li className="el-item" data-style="">
+                                            <li data-style="">
                                                 <div className="uk-position-cover"
                                                      data-uk-slideshow-parallax="scale: 1,1.2,1.2"
                                                      data-style="transform: scale(1.2);">
@@ -115,17 +115,17 @@
                                                      data-style="background-color: rgb(0, 0, 0); opacity: 0;">
                                                 </div>
                                                 <div className="uk-position-cover uk-flex uk-flex-left uk-flex-middle uk-container uk-section">
-                                                    <div className="el-overlay uk-panel uk-width-xlarge">
-                                                        <div className="el-meta uk-margin uk-h6 uk-margin-remove-adjacent"
+                                                    <div className="uk-overlay uk-overlay-default uk-panel uk-width-xlarge">
+                                                        <div className="uk-margin uk-h6 uk-margin-remove-adjacent"
                                                             data-uk-slideshow-parallax="y: 70,0,-100;"
-                                                             data-style="transform: translate3d(0px, -100px, 0px);">Bienestar y Belleza
+                                                             data-style="transform: translate3d(0px, -100px, 0px);"><p>Bienestar y Belleza</p>
                                                         </div>
-                                                        <h1 className="el-title uk-margin uk-heading-primary uk-heading-line"
+                                                        <h1 className="uk-margin uk-heading-primary uk-heading-line"
                                                             data-uk-slideshow-parallax="x: 320,0,-250;"
                                                             data-style="transform: translate3d(-250px, 0px, 0px);"><span>Cuidado de uñas &amp; el mejor trato</span>
                                                         </h1>
-                                                        <p><a className="el-link uk-button uk-button-default"
-                                                              href="/Appointment"
+                                                        <p><a className="uk-button uk-button-primary"
+                                                              href="/appoitment"
                                                               data-uk-slideshow-parallax="y: -60,0,190;"
                                                               data-style="transform: translate3d(0px, 190px, 0px);">Agenda una cita</a>
                                                         </p>

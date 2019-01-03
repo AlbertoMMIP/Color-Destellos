@@ -17,7 +17,8 @@ export const Footer = () => (
                                 </div>
                                 <div>
                                     <div className="el-content uk-margin">
-                                        <small>Creado por un Alumno de IronHack<br/>Alberto Martinez</small>
+                                        <small>Creado por un Alumno de IronHack<br/>Alberto Martinez <br/> Imagenes obtenidas de <a
+                                            href="https://unsplash.com/">unsplash</a> </small>
                                     </div>
                                 </div>
                             </div>
