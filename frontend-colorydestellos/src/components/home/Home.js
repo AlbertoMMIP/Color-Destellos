@@ -3,7 +3,7 @@
     import {About} from "./About";
     import {Instruccions} from "./Instrucctions";
     import {Footer} from "./Footer";
-
+    import {Link} from "react-router-dom";
 
 
     class Home extends Component{
@@ -87,10 +87,10 @@
                                                             data-uk-slideshow-parallax="x: 320,0,-250;"
                                                             data-style="transform: translate3d(-250px, 0px, 0px);"><span>Modernos estilos de uñas</span>
                                                         </h1>
-                                                        <p><a className="uk-button uk-button-primary"
-                                                              href="/techniques"
+                                                        <p><Link className="uk-button uk-button-primary"
+                                                              to="/techniques"
                                                               data-uk-slideshow-parallax="y: -60,0,190;"
-                                                              data-style="transform: translate3d(0px, 190px, 0px);">Revisar las Técnicas</a>
+                                                              data-style="transform: translate3d(0px, 190px, 0px);">Revisar las Técnicas</Link>
                                                         </p>
                                                     </div>
                                                 </div>
@@ -125,10 +125,10 @@
                                                             data-uk-slideshow-parallax="x: 320,0,-250;"
                                                             data-style="transform: translate3d(-250px, 0px, 0px);"><span>Cuidado de uñas &amp; el mejor trato</span>
                                                         </h1>
-                                                        <p><a className="uk-button uk-button-primary"
-                                                              href="/appoitment"
+                                                        <p><Link className="uk-button uk-button-primary"
+                                                              to="/appointment"
                                                               data-uk-slideshow-parallax="y: -60,0,190;"
-                                                              data-style="transform: translate3d(0px, 190px, 0px);">Agenda una cita</a>
+                                                              data-style="transform: translate3d(0px, 190px, 0px);">Agenda una cita</Link>
                                                         </p>
                                                     </div>
                                                 </div>

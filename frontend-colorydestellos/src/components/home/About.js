@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 export const About = () => (
     <div className="uk-grid-large uk-margin-large uk-grid" data-uk-grid="">
@@ -28,7 +29,7 @@ export const About = () => (
                         la necesidad de transladarse de un punto a otro.</p>
                         <div className="uk-grid-small uk-child-width-auto" data-uk-grid>
                             <div>
-                                <a className="uk-button uk-button-text" href="/appoitment">Agenda una cita</a>
+                                <Link className="uk-button uk-button-text" to="/appointment">Agenda una cita</Link>
                             </div>
                             <div>
                                 <a className="uk-button uk-button-text" href="#Instruccions">Instrucciones</a>

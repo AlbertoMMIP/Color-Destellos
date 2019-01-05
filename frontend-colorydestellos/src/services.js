@@ -1,10 +1,9 @@
 import axios from 'axios';
 import UIkit from 'uikit';
-import {append} from "uikit/src/js/util";
 
 
-const base_url = 'http://localhost:3000/api';
-//const base_url = 'https://colorydestellos.herokuapp.com/api'
+//const base_url = 'http://localhost:3000/api';
+const base_url = 'https://colorydestellos.herokuapp.com/api'
 
 export const login = (auth, history) => {
     axios.post(`${base_url}/auth/login`,auth)
