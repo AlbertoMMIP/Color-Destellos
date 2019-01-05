@@ -28,10 +28,9 @@ const appointmentSchema = new Schema({
   },
   desingURL:    String,
   appointment:  Date,
-  hour:         Number,
+  hour:         String,
   price:        Number,
-  tickect:      Number,
-  changes:      [Date]
+  tickect: Number
 },{
   timestamps:{
     createdAt: "created_at",

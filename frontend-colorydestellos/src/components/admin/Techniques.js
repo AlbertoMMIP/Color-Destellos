@@ -78,27 +78,26 @@ class Techniques extends  Component{
 
             <div>
                <NavBar user={user}/>
-                <div className="uk-container uk-container-1 uk-text-left">
-                    <h2 className="uk-margin-medium-top uk-margin-remove-bottom uk-h3">¿Que son las Técnicas?</h2>
-                    <div className="uk-margin-medium-top" property="text">
-                        <p className="uk-text-lead">Las técnicas son aquellos procesos que se realizan en las uñas, con las cuales se pueden generar varios diseños
-                            dependiendo el gusto de las clientas.</p>
-
-                        <p>El tiempo de colocación depende de la técnica seleccionada y al detalle que se establecerá, pude ser un procesos desde 90 minutos
-                            hasta 180 minutos.</p>
-                        <p>El tiempo que perdura el material depende al cuidado que se le de y a las actividades que se realicen con las manos. En promedio
-                            las uñas artificiales duran 15 días.</p>
-                        <p>Los precios pueden llegar a ser desde los $100.00 MXN o hasta los $1500.00 </p>
-                    </div>
-                    <br/>
-                    <h2 className="uk-text-left uk-margin">Descripción Corta de diferentes Técnicas</h2>
-                </div>
 
                 {user === "ADMIN" ?
                     <div className="uk-section-default">
                         <button className="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" onClick={this.showForm} >Agregar Técnica</button>
                     </div> :
-                    null
+                    <div className="uk-container uk-container-1 uk-text-left">
+                        <h2 className="uk-margin-medium-top uk-margin-remove-bottom uk-h3">¿Que son las Técnicas?</h2>
+                        <div className="uk-margin-medium-top" property="text">
+                            <p className="uk-text-lead">Las técnicas son aquellos procesos que se realizan en las uñas, con las cuales se pueden generar varios diseños
+                                dependiendo el gusto de las clientas.</p>
+
+                            <p>El tiempo de colocación depende de la técnica seleccionada y al detalle que se establecerá, pude ser un procesos desde 90 minutos
+                                hasta 180 minutos.</p>
+                            <p>El tiempo que perdura el material depende al cuidado que se le de y a las actividades que se realicen con las manos. En promedio
+                                las uñas artificiales duran 15 días.</p>
+                            <p>Los precios pueden llegar a ser desde los $100.00 MXN o hasta los $1500.00 </p>
+                        </div>
+                        <br/>
+                        <h2 className="uk-text-left uk-margin">Descripción Corta de diferentes Técnicas</h2>
+                    </div>
                 }
 
                 {addTech ?

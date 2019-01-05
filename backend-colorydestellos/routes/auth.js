@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const User = require('../models/User');
-const Stylist = require('../models/Stylist');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -37,14 +36,12 @@ router.post("/register",(req,res) => {
         phone = req.body.phone,
         rol = req.body.rol;
   User.create({name,email,password,phone,rol})
-      .then(() => {
-        res.status(201).json({msg:"Usuario registrado exitosamente"});
+      .then(user => {
+        res.status(201).json({user,msg:"Usuario registrado exitosamente"});
       })
       .catch(err => {
         res.status(500).json({msg:"El usuario no se pudo registrar"});
       })
-
-  
 });
 
 module.exports = router;

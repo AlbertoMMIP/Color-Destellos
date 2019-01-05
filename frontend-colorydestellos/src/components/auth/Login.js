@@ -35,14 +35,13 @@ class Login extends Component{
                 </div>
                 <div className="uk-cover-container" data-uk-height-viewport>
                     <canvas width="" height=""></canvas>
-                    <img
-                        src="https://images.unsplash.com/photo-1513374933342-24bf646c8f5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
+                    <img src="https://images.unsplash.com/photo-1513374933342-24bf646c8f5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80"
                         alt="backgroung"
                         data-uk-cover />
                     <form onSubmit={this.handleSubmit} className="uk-position-center">
                         <div className="uk-margin">
                             <div className="uk-inline">
-                                <span className="uk-form-icon" uk-icon="icon: user"/>
+                                <span className="uk-form-icon" data-uk-icon="icon: user"/>
                                 <input className="uk-input" type="email" onChange={this.handleChange} value={email} name="email" />
                             </div>
                         </div>

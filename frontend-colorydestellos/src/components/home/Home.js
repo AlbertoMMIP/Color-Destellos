@@ -12,11 +12,12 @@
             localStorage.removeItem('rol');
             localStorage.removeItem('name');
             localStorage.removeItem('token');
+            localStorage.removeItem('estilistaID');
         }
 
         render() {
             return(
-                <div className="tm-page">
+                <div>
                     <NavBar user="CLIENTE"/>
                     <div className="uk-section-primary uk-section uk-padding-remove-vertical">
                         <div className="uk-grid-margin uk-grid uk-grid-stack" data-uk-grid="">

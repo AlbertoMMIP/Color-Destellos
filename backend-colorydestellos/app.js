@@ -33,6 +33,7 @@ app.use(cookieParser());
 
 //CORS 
 app.use(cors({
+  // origin: ['https://colorydestellos.herokuapp.com']
   origin: ['http://localhost:3001']
 }));
 
@@ -48,7 +49,7 @@ app.use(require('node-sass-middleware')({
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+//app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
 
@@ -63,10 +64,11 @@ const stylist =     require('./routes/stylist');
 const technique =   require('./routes/technique');
 const appointment = require('./routes/appointment');
 
-app.use('/', index);
+
 app.use('/api/auth',auth);
 app.use('/api/stylist',stylist);
 app.use('/api/technique',technique);
 app.use('/api/appointment',appointment);
+app.use('/', index);
 
 module.exports = app;

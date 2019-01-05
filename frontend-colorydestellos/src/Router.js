@@ -5,7 +5,7 @@ import Login from "./components/auth/Login";
 import Stylists from "./components/admin/Stylists";
 import Agenda from "./components/stylist/Agenda";
 import Techniques from "./components/admin/Techniques";
-import Appoitment from "./components/appoitment/Appoitment";
+import Appointment from "./components/appoitment/Appointment";
 
 const Router = () => (
     <Switch>
@@ -14,7 +14,7 @@ const Router = () => (
         <Route exact path="/stylists"   component={Stylists} />
         <Route exact path="/agenda"     component={Agenda} />
         <Route exact path="/techniques" component={Techniques}/>
-        <Route exact path="/appoitment" component={Appoitment} />
+        <Route exact path="/appointment" component={Appointment} />
     </Switch>
 );
 

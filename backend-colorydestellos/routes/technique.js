@@ -21,7 +21,7 @@ router.post("/create", upload.single("imgs_url"), (req,res) =>{
             .catch(err => {
                 res.status(500).json({err, msg:"No se pudo registrar la técnica"});
             })
-})
+});
 
 router.get("/find", (req,res) => {
     Technique.find()
@@ -33,5 +33,27 @@ router.get("/find", (req,res) => {
         })
 });
 
+
+router.get("/findById/:id", (req, res) => {
+    let idTechnique = req.params.id;
+    Technique.findById(idTechnique)
+        .then(technique => {
+            res.status(200).json({technique});
+        })
+        .catch(err => {
+            res.status(500).json({err,msg:"No se pudo obtener la descripción"});
+        })
+});
+
+router.get("/getName/:id", (req, res) => {
+    let idTechnique = req.params.id;
+    Technique.findById(idTechnique,{name:1})
+        .then(technique => {
+            res.status(200).json({technique});
+        })
+        .catch(err => {
+            res.status(500).json({err,msg:"No se pudo obtener la descripción"});
+        })
+});
 
 module.exports = router;

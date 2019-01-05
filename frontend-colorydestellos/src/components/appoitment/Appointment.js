@@ -1,11 +1,56 @@
 import React, {Component} from 'react';
 import NavBar from "../home/NavBar";
-import {Resume} from "./Resume";
 import {StylistCard} from "../common/StylistCard";
+import {getStylists} from "../../services";
+import MakeAppointment from "./MakeAppointment";
 
-class Appoitment extends Component{
+class Appointment extends Component{
+
+    constructor(){
+        super();
+        this.state = {
+            stylists: [],
+            makeAppointment: false,
+            stylistSelected: {
+                id: "",
+                name: "No existe",
+                bussinessdays: ["LUNES", "MARTES", "MIERCOLES"],
+
+            },
+            appointment: {
+                client: "",
+                stylist: "",
+                technique: "",
+                place: "",
+                appointment: "",
+                hour: "",
+                price: "",
+                tickect: ""
+            }
+        }
+    };
+    componentWillMount(){
+        getStylists()
+            .then(arr => {
+                this.setState({stylists:arr.data.stylists});
+            })
+    }
+    showAppointment = (id,name) => {
+        let stylistSelected = {
+            id : id,
+            name : name
+        }
+        this.setState({makeAppointment:true,stylistSelected});
+    };
+
+    makeanAppointment = () => {
+
+    };
+
     render(){
+        let {stylists,stylistSelected,makeAppointment} = this.state;
         return(
+
             <div>
                 <NavBar user="CLIENTE"/>
                 <div className="uk-section-default uk-section" data-uk-scrollspy="target: [uk-scrollspy-class]; cls: uk-animation-slide-left-medium; delay: false;">
@@ -24,10 +69,11 @@ class Appoitment extends Component{
                                     <div className="uk-panel">
                                         <div className="uk-margin uk-text-center@m uk-text-center">
                                             <div className="uk-child-width-1-1">
-                                                <StylistCard user="CLIENT" img="https://images.unsplash.com/photo-1514448553123-ddc6ee76fd52?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"/>
-                                                <StylistCard user="CLIENT" img="https://images.unsplash.com/photo-1522337094846-8a818192de1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=639&q=80"/>
-                                                <StylistCard user="CLIENT" img="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80"/>
-                                            </div>
+                                                {stylists.length > 0 ?
+                                                    stylists.map(styl => <StylistCard key={styl._id} user="CLIENT" name={styl.name} idStylist={styl.estilistaID} make={this.showAppointment} /> ):
+                                                    <div><p>Sin Estilistas registradas</p></div>
+                                                }
+                                           </div>
                                         </div>
                                     </div>
                                 </div>
@@ -37,7 +83,8 @@ class Appoitment extends Component{
                 </div>
                 <div className="uk-section" id="Schedule" >
                     <div className="uk-container" >
-                        <Resume/>
+                        {makeAppointment ?
+                            <MakeAppointment id={stylistSelected.id} name={stylistSelected.name}/> : null}
                     </div>
                 </div>
             </div>
@@ -45,4 +92,4 @@ class Appoitment extends Component{
     }
 }
 
-export default Appoitment;
+export default Appointment;

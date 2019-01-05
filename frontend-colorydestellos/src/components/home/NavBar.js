@@ -1,8 +1,9 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 const NavBar = ({user}) =>(
             <div>
-                <div className="tm-header-mobile uk-hidden@l">
+                <div className="uk-hidden@l">
                     <nav className="uk-navbar-container uk-navbar" data-uk-navbar="">
                         <div className="uk-navbar-left">
                             <a className="uk-navbar-toggle" href="#tm-mobile" data-uk-toggle="">
@@ -16,7 +17,7 @@ const NavBar = ({user}) =>(
                             </a>
                         </div>
                         <div className="uk-navbar-right">
-                            <a className="uk-navbar-item uk-logo" href=""><img src="images/logobw.png" width="150px" height="auto" alt="Color"/></a>
+                            <a className="uk-navbar-item uk-logo" href=""><img src="images/logo.svg" width="150px" height="auto" alt="Color"/></a>
                         </div>
                     </nav>
                     <div id="tm-mobile" className="uk-modal-full uk-modal" data-uk-modal="">
@@ -32,18 +33,36 @@ const NavBar = ({user}) =>(
                                 <div className="uk-child-width-1-1 uk-grid uk-grid-stack" data-uk-grid="">
                                     <div>
                                         <div className="uk-panel" id="module-0">
-                                            <ul className="uk-nav uk-nav-primary uk-nav-center">
-                                                <li><a href="/">Inicio</a></li>
-                                                <li><a href="/#About">Acerca de</a></li>
-                                                <li><a href="/techniques">Técnicas</a></li>
-                                                <li><a href="/appoitment">Citas</a></li>
-                                                {/*<li><a href="/login">Iniciar</a></li>*/}
-                                                <li>
-                                                    <form className="uk-search uk-search-navbar uk-width-1-1">
-                                                        <input className="uk-search-input" type="search" placeholder="Consulta tu cita" autoFocus/>
-                                                    </form>
-                                                </li>
-                                            </ul>
+                                            <div className="uk-navbar-center">
+                                                {user === "ADMIN" ?
+                                                    <ul className="uk-nav uk-nav-primary uk-nav-center">
+                                                        <li><NavLink to = "/stylists" > Estilistas </NavLink></li>
+                                                        <li><NavLink to = "/techniques" > Técnicas </NavLink></li>
+                                                        <li><NavLink to = "/statistics" > Estadisticas </NavLink></li>
+                                                        <li><NavLink to = "/" > Salir </NavLink></li>
+                                                    </ul> :
+                                                    user === "ESTILISTA" ?
+                                                        <ul className="uk-nav uk-nav-primary uk-nav-center">
+                                                            <li><a href = "/" > Portafolio </a></li>
+                                                            <li><a href = "/Home" > Agenda </a></li>
+                                                            <li><a href = "/Home" > Perfil </a></li>
+                                                            <li><a href = "/Home" > Historial </a></li>
+                                                            <li><a href = "/" > Salir </a></li>
+                                                        </ul> :
+                                                        <ul className="uk-nav uk-nav-header uk-nav-center">
+                                                            <li><NavLink to = "/" > <p>Inicio</p> </NavLink></li>
+                                                            <li><a href = "/#About" > <b> Acerca de </b> </a></li>
+                                                            <li><NavLink to = "/techniques" > <b>Técnicas </b> </NavLink></li>
+                                                            <li><NavLink to = "/appointment" > <b>Citas </b></NavLink></li>
+                                                            <li><NavLink to ="/login"><b>Iniciar</b></NavLink></li>
+                                                            <li>
+                                                                <form className="uk-search uk-search-navbar uk-width-1-1">
+                                                                    <input className="uk-search-input" type="search" placeholder="Consulta tu cita" autoFocus/>
+                                                                </form>
+                                                            </li>
+                                                        </ul>
+                                                }
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -58,32 +77,32 @@ const NavBar = ({user}) =>(
                                 <nav className = "uk-navbar"  data-uk-navbar = "{&quot;align&quot;:&quot;center&quot;,&quot;boundary&quot;:&quot;!.uk-navbar-container&quot;}" >
                                     <div className = "uk-navbar-left" >
                                         <a href = "/" className = "uk-navbar-item uk-logo" >
-                                            {<img src = "images/logobw.png" width="150px" height="auto" alt = "Color" />
-                                                /*<img src = "images/Logo.png" width="250px" height="auto" className = "uk-logo-inverse" alt = "Color" />*/}
+                                            <img src = "images/logo.svg" width="150px" height="auto" alt = "Color" />
+                                            {/*<img src = "images/Logo.png" width="250px" height="auto" className = "uk-logo-inverse" alt = "Color" />*/}
                                         </a>
                                     </div>
                                     <div className="uk-navbar-center">
                                         {user === "ADMIN" ?
                                             <ul className="uk-navbar-nav">
-                                                <li><a href = "/stylists" > Estilistas </a></li>
-                                                <li><a href = "/techniques" > Técnicas </a></li>
-                                                <li><a href = "/statistics" > Estadisticas </a></li>
-                                                <li><a href = "/" > Salir </a></li>
+                                                <li><NavLink to = "/stylists" > Estilistas </NavLink></li>
+                                                <li><NavLink to = "/techniques" > Técnicas </NavLink></li>
+                                                <li><NavLink to = "/statistics" > Estadisticas </NavLink></li>
+                                                <li><NavLink to = "/" > Salir </NavLink></li>
                                             </ul> :
                                             user === "ESTILISTA" ?
                                                 <ul className="uk-navbar-nav">
-                                                    <li><a href = "/" > Portafolio </a></li>
-                                                    <li><a href = "/Home" > Agenda </a></li>
-                                                    <li><a href = "/Home" > Perfil </a></li>
-                                                    <li><a href = "/Home" > Historial </a></li>
-                                                    <li><a href = "/" > Salir </a></li>
+                                                    <li><NavLink to = "/book" > Portafolio </NavLink></li>
+                                                    <li><NavLink to = "/agenda" > Agenda </NavLink></li>
+                                                    <li><NavLink to = "/profile" > Perfil </NavLink></li>
+                                                    <li><NavLink to = "/historial" > Historial </NavLink></li>
+                                                    <li><NavLink to = "/" > Salir </NavLink></li>
                                                 </ul> :
                                                     <ul className="uk-navbar-nav">
-                                                        <li><a href = "/" > Inicio </a></li>
+                                                        <li><NavLink to = "/" > Inicio </NavLink></li>
                                                         <li><a href = "/#About" > Acerca de </a></li>
-                                                        <li><a href = "/techniques" > Técnicas </a></li>
-                                                        <li><a href = "/appoitment" > Citas </a></li>
-                                                        <li><a href="/login">Iniciar</a></li>
+                                                        <li><NavLink to = "/techniques" > Técnicas </NavLink></li>
+                                                        <li><NavLink to = "/appointment" > Citas </NavLink></li>
+                                                        <li><NavLink to ="/login">Iniciar</NavLink></li>
                                                     </ul>
                                         }
                                     </div>
