@@ -70,5 +70,7 @@ app.use('/api/stylist',stylist);
 app.use('/api/technique',technique);
 app.use('/api/appointment',appointment);
 app.use('/', index);
-
+app.all("*", (req,res) => {
+  res.sendFile(`${__dirname}/public/index.html`);
+});
 module.exports = app;

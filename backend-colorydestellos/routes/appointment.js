@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Appointment = require('../models/Appointment');
+const mail = require('../helpers/mailer');
 
 router.post("/create", (req,res) =>{
   let {client,
@@ -9,7 +10,8 @@ router.post("/create", (req,res) =>{
       coordinates,
       appointment,
       hour,
-      price} = req.body;
+      price,
+      emailTo} = req.body;
   let tickect = Math.floor(Math.random() * 9999);
   let appointmentDone = {client,
     stylist,
@@ -24,7 +26,13 @@ router.post("/create", (req,res) =>{
   
   Appointment.create(appointmentDone)
           .then(appoi =>{
-              res.status(201).json({appoi});
+            const options = {
+              email : emailTo,
+              subject:"Color y Destellos",
+              ticket:tickect
+            }
+            mail.send(options);
+            res.status(201).json({appoi});
           })
           .catch(err => {
               console.log(err);
@@ -54,13 +62,15 @@ router.get("/:idStylist", (req,res) => {
     })
 });
 
-router.get("/:ticket", (req,res) => {
-  Appointment.find({tickect:req.params.ticket})
+router.get("/getInfoCita/:ticket", (req,res) => {
+  Appointment.findOne({tickect:req.params.ticket})
+    .populate("client technique stylist","name")
     .then(appoints => {
+      if (!appoints) res.status(500).json({err,msg:"Ticket no registrado en la base."});
       res.status(200).json({appoints});
     })
     .catch(err => {
-      res.status(500).json({err,msg:"No tiene citas la estilista"});
+      res.status(500).json({err,msg:"Ticket no registrado en la base."});
     })
 });
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-export const StylistCard = ({user,name,img,idStylist, make}) => (
+export const StylistCard = ({user,name,img,idStylist,idUser, make}) => (
     <div>
         <div className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" data-uk-grid>
             <div className="uk-card-media-left uk-cover-container">
@@ -18,7 +18,7 @@ export const StylistCard = ({user,name,img,idStylist, make}) => (
                         </p> :
                         <p data-uk-margin>
                             <a className="uk-button uk-button-default" href="#">Portafolio</a>
-                            <a className="uk-button uk-button-primary" href="#Schedule" onClick={() => make(idStylist,name)} >Agendar</a>
+                            <a className="uk-button uk-button-primary" href="#Schedule" onClick={() => make(idStylist,name,idUser)} >Agendar</a>
                         </p>
                         }
                 </div>

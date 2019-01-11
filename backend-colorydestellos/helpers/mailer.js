@@ -17,8 +17,8 @@ exports.send = (options) => {
     subject: options.subject,
     from: `<noreplay@colorydestellos.com>`,
     to: options.email,
-    text: `Confirma tu usuario`,
-    html: options.html
+    text: `Gracias por agendar tu cita. Tu número de ticket es ${options.ticket} `,
+    html: `<p>Gracias por agendar tu cita. Tu número de ticket es <strong> ${options.ticket} </strong></p>`
   };
 
   return transport.sendMail(mailOptions);

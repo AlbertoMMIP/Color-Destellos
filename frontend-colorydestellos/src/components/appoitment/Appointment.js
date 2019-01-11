@@ -13,6 +13,7 @@ class Appointment extends Component{
             makeAppointment: false,
             stylistSelected: {
                 id: "",
+                idUser:"",
                 name: "No existe",
                 bussinessdays: ["LUNES", "MARTES", "MIERCOLES"],
 
@@ -35,10 +36,11 @@ class Appointment extends Component{
                 this.setState({stylists:arr.data.stylists});
             })
     }
-    showAppointment = (id,name) => {
+    showAppointment = (id,name,idUser) => {
         let stylistSelected = {
             id : id,
-            name : name
+            name : name,
+            idUser : idUser
         }
         this.setState({makeAppointment:true,stylistSelected});
     };
@@ -70,7 +72,7 @@ class Appointment extends Component{
                                         <div className="uk-margin uk-text-center@m uk-text-center">
                                             <div className="uk-child-width-1-1">
                                                 {stylists.length > 0 ?
-                                                    stylists.map(styl => <StylistCard key={styl._id} user="CLIENT" name={styl.name} idStylist={styl.estilistaID} make={this.showAppointment} /> ):
+                                                    stylists.map(styl => <StylistCard key={styl._id} user="CLIENT" name={styl.name} idStylist={styl.estilistaID} idUser={styl._id} make={this.showAppointment} /> ):
                                                     <div><p>Sin Estilistas registradas</p></div>
                                                 }
                                            </div>
@@ -84,7 +86,7 @@ class Appointment extends Component{
                 <div className="uk-section" id="Schedule" >
                     <div className="uk-container" >
                         {makeAppointment ?
-                            <MakeAppointment id={stylistSelected.id} name={stylistSelected.name}/> : null}
+                            <MakeAppointment id={stylistSelected.id} name={stylistSelected.name} idUser={stylistSelected.idUser}/> : null}
                     </div>
                 </div>
             </div>

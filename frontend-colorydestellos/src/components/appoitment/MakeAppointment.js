@@ -32,7 +32,8 @@ class MakeAppointment extends Component {
                 coordinates: [],
                 appointment: "",
                 hour: "",
-                price: ""
+                price: "",
+                emailTo:""
             }
         }
     }
@@ -106,11 +107,12 @@ class MakeAppointment extends Component {
         user.confirmPass = "12345";
         user.phone = e.target.phone.value;
 
-        appointment.stylist = this.props.id;
+        appointment.stylist = this.props.idUser;
         appointment.technique = e.target.technique.value;
         obj = techniques.filter(element => element.id ===  e.target.technique.value);
         appointment.price = obj[0].price;
         appointment.coordinates = stylist.locationEstablishment.coordinates;
+        appointment.emailTo = e.target.email.value;
 
         this.setState({user});
 

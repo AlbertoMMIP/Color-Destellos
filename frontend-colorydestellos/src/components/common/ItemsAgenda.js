@@ -1,5 +1,6 @@
 import React from 'react';
 import moment from 'moment';
+import 'moment/locale/es';
 
 export  const ItemAgenda = ({appointment}) => (
         <div>
@@ -7,7 +8,7 @@ export  const ItemAgenda = ({appointment}) => (
                 <h3 className="uk-card-title">{appointment.client.name}</h3>
                 <h5>{appointment.client.phone}</h5>
                 <p>Técnica solicitada: {appointment.technique.name}</p>
-                <p>Para el día: {appointment.appointment} </p>
+                <p>Para el día: {moment(appointment.appointment).format('DD/MM/YYYY')} </p>
                 <p>A la hora: {appointment.hour} </p>
             </div>
         </div>

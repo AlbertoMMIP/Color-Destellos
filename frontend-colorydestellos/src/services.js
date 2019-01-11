@@ -3,7 +3,7 @@ import UIkit from 'uikit';
 
 
 //const base_url = 'http://localhost:3000/api';
-const base_url = 'https://colorydestellos.herokuapp.com/api'
+const base_url = 'https://colorydestellos.herokuapp.com/api';
 
 export const login = (auth, history) => {
     axios.post(`${base_url}/auth/login`,auth)
@@ -13,7 +13,7 @@ export const login = (auth, history) => {
             localStorage.setItem(("rol"),JSON.stringify(res.data.user.rol));
             if(res.data.user.rol === "ADMIN") history.push("/stylists");
             else {
-                localStorage.setItem("estilistaID",JSON.stringify(res.data.user.estilistaID));
+                localStorage.setItem("estilistaID",JSON.stringify(res.data.user._id));
                 history.push("/agenda");
             }
 
@@ -69,3 +69,7 @@ export const createAppointment = (appointment) => {
 export const getAppointmentbyStylist = (id) => {
     return axios.get(`${base_url}/appointment/${id}`);
 };
+
+export const getInfoAppointment = (ticket) => {
+    return axios.get(`${base_url}/appointment/getInfoCita/${ticket}`);
+}
