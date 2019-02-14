@@ -33,8 +33,8 @@ app.use(cookieParser());
 
 //CORS 
 app.use(cors({
-  origin: ['https://colorydestellos.herokuapp.com']
-  //origin: ['http://localhost:3001']
+  //origin: ['https://colorydestellos.herokuapp.com']
+  origin: ['http://localhost:3001']
 }));
 
 // Express View engine setup

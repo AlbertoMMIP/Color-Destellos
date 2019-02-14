@@ -13,9 +13,11 @@ class MakeAppointment extends Component {
             stylist: {},
             nameStylist:"",
             days:[],
+            hours:[],
             techniques:[],
             showResult: false,
             showCard: true,
+            showFreeHours: false,
             ticket:"",
             user:{
                 name : "",
@@ -39,30 +41,11 @@ class MakeAppointment extends Component {
     }
 
     componentWillMount() {
-        let idStylist = this.props.id, days = [], techniques=[] ;
+        let idStylist = this.props.id, days = [], techniques=[], hours=[] ;
 
         getStylist(idStylist)
             .then(sty => {
-                days = sty.data.info.businessDays.map(day =>{
-                   switch (day) {
-                       case "LU":
-                           return "LUNES";
-                       case "MA":
-                           return "MARTES";
-                       case "MI":
-                           return "MIERCOLES";
-                       case "JU":
-                           return "JUEVES";
-                       case "VI":
-                           return "VIERNES";
-                       case "SA":
-                           return "SABADO";
-                       case "DO":
-                           return "DOMINGO";
-                       default:
-                           return "LUNES";
-                   }
-                });
+                days = sty.data.info.businessDays;
                 sty.data.info.techniques.map( tech => {
                    let technique = {name:"", id:"", price:""};
                    getNameTech(tech.technique)
@@ -76,24 +59,58 @@ class MakeAppointment extends Component {
                        });
                    return technique;
                 });
-                this.setState({stylist:sty.data.info,nameStylist:this.props.name,days});
+                let start = sty.data.info.businessHours.start.substring(0, 2),
+                    end = sty.data.info.businessHours.end.substring(0, 2);
+                for(let c=start;c<=end;c++){
+                    hours.push(c);
+                }
+                this.setState({stylist:sty.data.info,nameStylist:this.props.name,days,hours});
             });
     }
 
 
-    onChangeTime = (time, timeString) => {
+    onChangeTime = (e) => {
         // console.log(`time ${time}`);
         // console.log(`tring ${timeString}`);
+        e.preventDefault();
+        var arr = Array.from(document.getElementById('divHorasLibres').children);
+        arr.forEach(item => {
+            if(e.target.id === item.id) item.className = 'uk-button uk-button-default uk-background-primary';
+            else item.className = 'uk-button uk-button-default';
+        });
         let {appointment} = this.state;
-        appointment.hour = timeString;
+        appointment.hour = e.target.innerText;
         this.setState({appointment})
     }
 
     onChangeDate = (date, dateString)  => {
         //console.log(`date ${date} , string ${dateString}`);
-        let {appointment} = this.state;
+        let {appointment,showFreeHours,hours} = this.state;
+        var horasDisponibles =  hours,
+            horasAgendadas = [],
+            horasLibres = [],
+            cita = 22;
+
+        horasAgendadas.push(cita-1);
+        horasAgendadas.push(cita);
+        horasAgendadas.push(cita+1);
+
+        horasLibres = horasDisponibles.filter(eleDis =>  !horasAgendadas.some(eleAgendada => eleDis === eleAgendada));
+
+        let divHorasLibres = document.getElementById('divHorasLibres');
+        divHorasLibres.innerHTML = "";
+
+        horasLibres.forEach((item,index) => {
+            let btn =  document.createElement('a');
+            btn.id = 'btn' + index;
+            btn.innerText = item + ':00';
+            btn.className = "uk-button uk-button-default";
+            btn.onclick = this.onChangeTime;
+            divHorasLibres.appendChild(btn);
+        } );
+        showFreeHours = true;
         appointment.appointment = date;
-        this.setState({appointment})
+        this.setState({appointment,showFreeHours})
     }
 
 
@@ -142,7 +159,7 @@ class MakeAppointment extends Component {
     };
 
     render(){
-        let {stylist,nameStylist,days,techniques,showResult,ticket,showCard} = this.state;
+        let {stylist,nameStylist,days,techniques,showResult,ticket,showCard,showFreeHours} = this.state;
         return(
             <div className="uk-width-expand@l uk-grid-item-match uk-flex-middle">
                 <div className="uk-panel">
@@ -174,27 +191,35 @@ class MakeAppointment extends Component {
                                     </div>
                                 </div>
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" htmlFor="form-horizontal-text">Teléfono</label>
+                                    <label className="uk-form-label" >Teléfono</label>
                                     <div className="uk-form-controls">
-                                        <input className="uk-input" id="form-horizontal-text" type="number" name="phone"
+                                        <input className="uk-input" type="number" name="phone"
                                                placeholder="044 (55) - 0000 - 0000"/>
                                     </div>
                                 </div>
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" htmlFor="form-horizontal-text">Email</label>
+                                    <label className="uk-form-label" >Email</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" id="form-horizontal-text" type="email" name="email"
                                                placeholder="email@correo.com"/>
                                     </div>
                                 </div>
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" htmlFor="form-horizontal-text">Fecha</label>
+                                    <label className="uk-form-label" >Fecha</label>
                                     <div className="uk-form-controls">
                                         <DatePicker onChange={this.onChangeDate} />
-                                        <TimePicker onChange={this.onChangeTime} defaultValue={moment('15:00', 'HH:mm')} format={'HH:mm'} minuteStep={10} name="hour" />
+                                        {/* <TimePicker onChange={this.onChangeTime} defaultValue={moment('15:00', 'HH:mm')} format={'HH:mm'} minuteStep={10} name="hour" /> */}
                                     </div>
                                 </div>
-
+                                
+                                <div className="uk-margin" >
+                                    {showFreeHours ? 
+                                        <label className="uk-form-label">Horario Disponible</label>:
+                                    null}
+                                    <div className="uk-form-controls" id="divHorasLibres">
+                                    </div>
+                                </div>  
+                                
                                 <div className="uk-margin">
                                     <label className="uk-form-label" htmlFor="form-horizontal-select">Escoge tu Técnica</label>
                                     <div className="uk-form-controls">
