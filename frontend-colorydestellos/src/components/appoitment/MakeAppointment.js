@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import {DatePicker} from "antd";
-import TimePicker from "antd/es/time-picker";
-import moment from 'moment';
 import {createAppointment, createUser, getNameTech, getStylist} from "../../services";
 import UIkit from 'uikit';
 
@@ -21,7 +19,6 @@ class MakeAppointment extends Component {
             ticket:"",
             user:{
                 name : "",
-                email : "",
                 password : "",
                 confirmPass : "",
                 phone : "",
@@ -35,7 +32,8 @@ class MakeAppointment extends Component {
                 appointment: "",
                 hour: "",
                 price: "",
-                emailTo:""
+                phoneTo:"",
+                serviceAt: ""
             }
         }
     }
@@ -49,7 +47,7 @@ class MakeAppointment extends Component {
                 sty.data.info.techniques.map( tech => {
                    let technique = {name:"", id:"", price:""};
                    getNameTech(tech.technique)
-                       .then(async techn => {
+                       .then(techn => {
                            if(techn.data.technique) technique.name = `${techn.data.technique.name}`;
                            else technique.name = "SN";
                            technique.id = tech.technique;
@@ -119,7 +117,6 @@ class MakeAppointment extends Component {
         let {user,appointment,techniques,stylist} = this.state, obj = {};
 
         user.name = e.target.name.value;
-        user.email = e.target.email.value;
         user.password = "12345";
         user.confirmPass = "12345";
         user.phone = e.target.phone.value;
@@ -129,7 +126,8 @@ class MakeAppointment extends Component {
         obj = techniques.filter(element => element.id ===  e.target.technique.value);
         appointment.price = obj[0].price;
         appointment.coordinates = stylist.locationEstablishment.coordinates;
-        appointment.emailTo = e.target.email.value;
+        appointment.phoneTo = e.target.phone.value;
+        appointment.serviceAt = e.target.radio1[1].checked ? 'A domicilio' : 'En establecimiento';
 
         this.setState({user});
 
@@ -139,7 +137,6 @@ class MakeAppointment extends Component {
                 this.setState({appointment});
                 createAppointment(this.state.appointment)
                     .then(appo => {
-                        console.log(appo);
                         this.setState({showResult:true,showCard:false,ticket:appo.data.appoi.tickect});
                     })
                     .catch(err => {
@@ -194,16 +191,16 @@ class MakeAppointment extends Component {
                                     <label className="uk-form-label" >Teléfono</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" type="number" name="phone"
-                                               placeholder="044 (55) - 0000 - 0000"/>
+                                               placeholder="044(55)0000 0000"/>
                                     </div>
                                 </div>
-                                <div className="uk-margin">
+                                {/* <div className="uk-margin">
                                     <label className="uk-form-label" >Email</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" id="form-horizontal-text" type="email" name="email"
                                                placeholder="email@correo.com"/>
                                     </div>
-                                </div>
+                                </div> */}
                                 <div className="uk-margin">
                                     <label className="uk-form-label" >Fecha</label>
                                     <div className="uk-form-controls">
@@ -231,14 +228,13 @@ class MakeAppointment extends Component {
                                         </select>
                                     </div>
                                 </div>
-                                {/*<div className="uk-margin">
+                                <div className="uk-margin">
                                     <div className="uk-form-label">Ubicación</div>
                                     <div className="uk-form-controls uk-form-controls-text">
-                                        <label><input className="uk-radio" type="radio" name="radio1"/> A domicilio</label><br/>
-                                        <label><input className="uk-radio" type="radio" name="radio1"/> En
-                                            Establecimiento</label>
+                                        <label><input className="uk-radio" type="radio" name="radio1"/> En Establecimiento</label><br/>
+                                        <label><input className="uk-radio" type="radio" name="radio1"/> A domicilio</label>
                                     </div>
-                                </div>*/}
+                                </div>
                                 <div className="uk-margin">
                                     <div className="uk-form-controls uk-align-right">
                                         <button type="submit" className="uk-button uk-button-primary">Agendar</button>
@@ -248,7 +244,7 @@ class MakeAppointment extends Component {
                             null}
                             {showResult ?
                                 <div className="uk-alert-primary" data-uk-alert>
-                                    <a className="uk-alert-close" data-uk-close/>
+                                    <a className="uk-alert-close" data-uk-close />
                                     <p>Su cita se generó correctamente</p>
                                     <p>Podrá consultarla con el siguiente número de ticket {ticket}</p>
                                 </div> :

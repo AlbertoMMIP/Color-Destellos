@@ -10,6 +10,7 @@ export  const ItemAgenda = ({appointment}) => (
                 <p>Técnica solicitada: {appointment.technique.name}</p>
                 <p>Para el día: {moment(appointment.appointment).format('DD/MM/YYYY')} </p>
                 <p>A la hora: {appointment.hour} </p>
+                <p>Servicio en: {appointment.serviceAt} </p>
             </div>
         </div>
 );

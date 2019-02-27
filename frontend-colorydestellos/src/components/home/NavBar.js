@@ -34,7 +34,8 @@ class NavBar extends Component {
                     <div className="uk-grid-small" data-uk-grid>
                     <div className="uk-width-expand" data-uk-leader>Costo por la técnica   $</div>
                     <div>${res.data.appoints.price}</div>
-                    </div>`)
+                    </div>
+                    <p>Servicio en : <strong> ${res.data.appoints.serviceAt} </strong> </p>`)
                     .then(function () {
                     });
             })

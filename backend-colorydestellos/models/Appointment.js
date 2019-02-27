@@ -30,7 +30,8 @@ const appointmentSchema = new Schema({
   appointment:  Date,
   hour:         String,
   price:        Number,
-  tickect: Number
+  tickect:      Number,
+  serviceAt:    String
 },{
   timestamps:{
     createdAt: "created_at",

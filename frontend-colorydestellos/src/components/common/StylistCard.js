@@ -1,6 +1,6 @@
 import React from "react";
 
-export const StylistCard = ({user,name,img,idStylist,idUser, make}) => (
+export const StylistCard = ({user,img,name,idStylist,idUser, make}) => (
     <div>
         <div className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" data-uk-grid>
             <div className="uk-card-media-left uk-cover-container">

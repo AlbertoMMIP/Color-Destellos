@@ -45,10 +45,6 @@ class Appointment extends Component{
         this.setState({makeAppointment:true,stylistSelected});
     };
 
-    makeanAppointment = () => {
-
-    };
-
     render(){
         let {stylists,stylistSelected,makeAppointment} = this.state;
         return(
@@ -72,7 +68,7 @@ class Appointment extends Component{
                                         <div className="uk-margin uk-text-center@m uk-text-center">
                                             <div className="uk-child-width-1-1">
                                                 {stylists.length > 0 ?
-                                                    stylists.map(styl => <StylistCard key={styl._id} user="CLIENT" name={styl.name} idStylist={styl.estilistaID} idUser={styl._id} make={this.showAppointment} /> ):
+                                                    stylists.map(styl => <StylistCard key={styl._id} user="CLIENT" img={styl.estilistaID.profile_url} name={styl.name} idStylist={styl.estilistaID._id} idUser={styl._id} make={this.showAppointment} /> ):
                                                     <div><p>Sin Estilistas registradas</p></div>
                                                 }
                                            </div>

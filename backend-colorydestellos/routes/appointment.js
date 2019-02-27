@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Appointment = require('../models/Appointment');
-const mail = require('../helpers/mailer');
+const sms = require('../helpers/send_sms');
 
 router.post("/create", (req,res) =>{
   let {client,
@@ -11,8 +11,8 @@ router.post("/create", (req,res) =>{
       appointment,
       hour,
       price,
-      emailTo} = req.body;
-  let tickect = Math.floor(Math.random() * 9999);
+      phoneTo,
+      serviceAt} = req.body;
   let appointmentDone = {client,
     stylist,
     technique,
@@ -22,22 +22,30 @@ router.post("/create", (req,res) =>{
     appointment,
     hour,
     price,
-    tickect} 
+    tickect:0,
+    serviceAt};
+
+  phoneTo = '+5255'.concat(phoneTo.substr(phoneTo.length-8,8));
   
-  Appointment.create(appointmentDone)
-          .then(appoi =>{
-            const options = {
-              email : emailTo,
-              subject:"Color y Destellos",
-              ticket:tickect
-            }
-            mail.send(options);
-            res.status(201).json({appoi});
-          })
-          .catch(err => {
-              console.log(err);
-              res.status(500).json({err, msg:"No se pudo registrar la técnica"});
-          })
+  Appointment.find().sort({tickect : -1}).limit(1)
+            .then(appoints => {
+              appointmentDone.tickect = appoints[0].tickect+1;
+              Appointment.create(appointmentDone)
+              .then(appoi =>{
+                const options = {
+                  user: 'CLIENT',
+                  to : phoneTo,
+                  ticket:appoi.tickect
+                }
+                sms.sendSms(options);
+                res.status(201).json({appoi});
+              })
+              .catch(err => {
+                  res.status(500).json({err, msg:"No se pudo registrar la técnica"});
+              })
+            } )
+
+  
 });
 
 router.get("/", (req,res) => {
