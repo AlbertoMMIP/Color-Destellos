@@ -72,4 +72,8 @@ export const getAppointmentbyStylist = (id) => {
 
 export const getInfoAppointment = (ticket) => {
     return axios.get(`${base_url}/appointment/getInfoCita/${ticket}`);
+};
+
+export const getHoursAppointment = (idStylist,date) => {
+    return axios.get(`${base_url}/appointment/${idStylist}/${date}`);
 }

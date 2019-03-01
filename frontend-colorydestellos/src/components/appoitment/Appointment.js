@@ -15,18 +15,7 @@ class Appointment extends Component{
                 id: "",
                 idUser:"",
                 name: "No existe",
-                bussinessdays: ["LUNES", "MARTES", "MIERCOLES"],
-
-            },
-            appointment: {
-                client: "",
-                stylist: "",
-                technique: "",
-                place: "",
-                appointment: "",
-                hour: "",
-                price: "",
-                tickect: ""
+                bussinessdays: ["LUNES", "MARTES", "MIERCOLES"]
             }
         }
     };

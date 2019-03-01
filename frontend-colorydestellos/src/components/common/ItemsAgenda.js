@@ -8,6 +8,7 @@ export  const ItemAgenda = ({appointment}) => (
                 <h3 className="uk-card-title">{appointment.client.name}</h3>
                 <h5>{appointment.client.phone}</h5>
                 <p>Técnica solicitada: {appointment.technique.name}</p>
+                <p>Como llega de la BD {appointment.appointment} </p>
                 <p>Para el día: {moment(appointment.appointment).format('DD/MM/YYYY')} </p>
                 <p>A la hora: {appointment.hour} </p>
                 <p>Servicio en: {appointment.serviceAt} </p>

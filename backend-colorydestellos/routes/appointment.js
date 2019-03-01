@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Appointment = require('../models/Appointment');
 const sms = require('../helpers/send_sms');
+const moment = require('moment');
 
 router.post("/create", (req,res) =>{
   let {client,
@@ -13,6 +14,8 @@ router.post("/create", (req,res) =>{
       price,
       phoneTo,
       serviceAt} = req.body;
+
+  appointment = moment(appointment).format('MM/DD/YYYY');
   let appointmentDone = {client,
     stylist,
     technique,
@@ -37,7 +40,7 @@ router.post("/create", (req,res) =>{
                   to : phoneTo,
                   ticket:appoi.tickect
                 }
-                sms.sendSms(options);
+                //sms.sendSms(options);
                 res.status(201).json({appoi});
               })
               .catch(err => {
@@ -82,8 +85,11 @@ router.get("/getInfoCita/:ticket", (req,res) => {
     })
 });
 
-router.get("/:idStylist:date", (req,res) => {
-  Appointment.find({$and:[{stylist:req.params.idStylist},{appoiment:req.params.date}]})
+router.get("/:idStylist/:date", (req,res) => {
+  let startDay = new Date(req.params.date);
+  let endDay = new Date(req.params.date);
+  endDay.setDate(endDay.getDate() + 1);
+  Appointment.find({$and:[{stylist:req.params.idStylist},{appointment:{$gte:startDay}},{appointment:{$lt:endDay}}]},{hour:1})
     .then(appoints => {
       res.status(200).json({appoints});
     })

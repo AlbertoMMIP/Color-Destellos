@@ -19,7 +19,6 @@ class Agenda extends Component{
     componentWillMount() {
         let name = localStorage.getItem("name"),
             estilistaID = localStorage.getItem("estilistaID").replace('"','');
-        let {appointments} = this.state;
         this.setState({name,estilistaID});
         getAppointmentbyStylist(estilistaID.replace('"',''))
             .then(appoints => {

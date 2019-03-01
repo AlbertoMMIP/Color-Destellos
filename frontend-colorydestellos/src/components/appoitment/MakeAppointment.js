@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 import {DatePicker} from "antd";
-import {createAppointment, createUser, getNameTech, getStylist} from "../../services";
+import {createAppointment, createUser, getNameTech, getStylist, getHoursAppointment} from "../../services";
 import UIkit from 'uikit';
+import moment from 'moment';
+import 'moment/locale/es';
+
 
 class MakeAppointment extends Component {
 
@@ -13,14 +16,15 @@ class MakeAppointment extends Component {
             days:[],
             hours:[],
             techniques:[],
+            horasLibres:[],
             showResult: false,
             showCard: true,
             showFreeHours: false,
             ticket:"",
             user:{
                 name : "",
-                password : "",
-                confirmPass : "",
+                password : "12345",
+                confirmPass : "12345",
                 phone : "",
                 rol : "CLIENTE"
             },
@@ -68,8 +72,6 @@ class MakeAppointment extends Component {
 
 
     onChangeTime = (e) => {
-        // console.log(`time ${time}`);
-        // console.log(`tring ${timeString}`);
         e.preventDefault();
         var arr = Array.from(document.getElementById('divHorasLibres').children);
         arr.forEach(item => {
@@ -81,34 +83,29 @@ class MakeAppointment extends Component {
         this.setState({appointment})
     }
 
-    onChangeDate = (date, dateString)  => {
-        //console.log(`date ${date} , string ${dateString}`);
+    onChangeDate = async (date, dateString)  => {
         let {appointment,showFreeHours,hours} = this.state;
         var horasDisponibles =  hours,
             horasAgendadas = [],
             horasLibres = [],
-            cita = 22;
+            cita = 2;
 
-        horasAgendadas.push(cita-1);
-        horasAgendadas.push(cita);
-        horasAgendadas.push(cita+1);
-
+        await getHoursAppointment(this.props.idUser,dateString)
+                .then(hours => {
+                    if (hours.data.appoints.length > 0){
+                        hours.data.appoints.forEach(item => {
+                            cita = item.hour.substring(0,2);
+                            cita = cita * 1;
+                            horasAgendadas.push(cita-1);
+                            horasAgendadas.push(cita);
+                            horasAgendadas.push(cita+1);
+                        });
+                    }
+                });    
         horasLibres = horasDisponibles.filter(eleDis =>  !horasAgendadas.some(eleAgendada => eleDis === eleAgendada));
-
-        let divHorasLibres = document.getElementById('divHorasLibres');
-        divHorasLibres.innerHTML = "";
-
-        horasLibres.forEach((item,index) => {
-            let btn =  document.createElement('a');
-            btn.id = 'btn' + index;
-            btn.innerText = item + ':00';
-            btn.className = "uk-button uk-button-default";
-            btn.onclick = this.onChangeTime;
-            divHorasLibres.appendChild(btn);
-        } );
-        showFreeHours = true;
+        showFreeHours = true;        
         appointment.appointment = date;
-        this.setState({appointment,showFreeHours})
+        this.setState({appointment,showFreeHours,horasLibres})
     }
 
 
@@ -117,8 +114,6 @@ class MakeAppointment extends Component {
         let {user,appointment,techniques,stylist} = this.state, obj = {};
 
         user.name = e.target.name.value;
-        user.password = "12345";
-        user.confirmPass = "12345";
         user.phone = e.target.phone.value;
 
         appointment.stylist = this.props.idUser;
@@ -156,7 +151,7 @@ class MakeAppointment extends Component {
     };
 
     render(){
-        let {stylist,nameStylist,days,techniques,showResult,ticket,showCard,showFreeHours} = this.state;
+        let {stylist,nameStylist,days,techniques,showResult,ticket,showCard,showFreeHours,horasLibres} = this.state;
         return(
             <div className="uk-width-expand@l uk-grid-item-match uk-flex-middle">
                 <div className="uk-panel">
@@ -214,6 +209,9 @@ class MakeAppointment extends Component {
                                         <label className="uk-form-label">Horario Disponible</label>:
                                     null}
                                     <div className="uk-form-controls" id="divHorasLibres">
+                                        {horasLibres.length > 0 ?
+                                            horasLibres.map((item,index) => <a id={index} key={index} onClick={this.onChangeTime} className='uk-button uk-button-default'>{item}:00</a>  ) : null
+                                        }
                                     </div>
                                 </div>  
                                 
