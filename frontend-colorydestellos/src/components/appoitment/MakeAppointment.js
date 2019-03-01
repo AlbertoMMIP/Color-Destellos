@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import {DatePicker} from "antd";
 import {createAppointment, createUser, getNameTech, getStylist, getHoursAppointment} from "../../services";
 import UIkit from 'uikit';
-import moment from 'moment';
-import 'moment/locale/es';
-
 
 class MakeAppointment extends Component {
 
@@ -41,6 +38,10 @@ class MakeAppointment extends Component {
             }
         }
     }
+    disabledEndDate = (endValue) => {
+        const startValue = new Date();
+        return endValue.valueOf() <= startValue.valueOf();
+      }
 
     componentWillMount() {
         let idStylist = this.props.id, days = [], techniques=[], hours=[] ;
@@ -69,7 +70,6 @@ class MakeAppointment extends Component {
                 this.setState({stylist:sty.data.info,nameStylist:this.props.name,days,hours});
             });
     }
-
 
     onChangeTime = (e) => {
         e.preventDefault();
@@ -108,7 +108,6 @@ class MakeAppointment extends Component {
         this.setState({appointment,showFreeHours,horasLibres})
     }
 
-
     makeAppointment = (e) => {
         e.preventDefault();
         let {user,appointment,techniques,stylist} = this.state, obj = {};
@@ -129,6 +128,7 @@ class MakeAppointment extends Component {
         createUser(this.state.user)
             .then(user => {
                 appointment.client = user.data.user._id;
+                console.log(`The answer of the created an user id ${user.data.msg}`);
                 this.setState({appointment});
                 createAppointment(this.state.appointment)
                     .then(appo => {
@@ -183,10 +183,10 @@ class MakeAppointment extends Component {
                                     </div>
                                 </div>
                                 <div className="uk-margin">
-                                    <label className="uk-form-label" >Teléfono</label>
+                                    <label className="uk-form-label" >Celular</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" type="number" name="phone"
-                                               placeholder="044(55)0000 0000"/>
+                                               placeholder="044 55 0000 0000"/>
                                     </div>
                                 </div>
                                 {/* <div className="uk-margin">
@@ -199,21 +199,24 @@ class MakeAppointment extends Component {
                                 <div className="uk-margin">
                                     <label className="uk-form-label" >Fecha</label>
                                     <div className="uk-form-controls">
-                                        <DatePicker onChange={this.onChangeDate} />
+                                        <DatePicker onChange={this.onChangeDate} disabledDate={this.disabledEndDate} />
                                         {/* <TimePicker onChange={this.onChangeTime} defaultValue={moment('15:00', 'HH:mm')} format={'HH:mm'} minuteStep={10} name="hour" /> */}
                                     </div>
                                 </div>
-                                
+                                {showFreeHours ? 
                                 <div className="uk-margin" >
-                                    {showFreeHours ? 
-                                        <label className="uk-form-label">Horario Disponible</label>:
-                                    null}
+                                    <label className="uk-form-label">Horario Disponible</label>
                                     <div className="uk-form-controls" id="divHorasLibres">
                                         {horasLibres.length > 0 ?
-                                            horasLibres.map((item,index) => <a id={index} key={index} onClick={this.onChangeTime} className='uk-button uk-button-default'>{item}:00</a>  ) : null
+                                            horasLibres.map((item,index) => <a id={index} key={index} onClick={this.onChangeTime} className='uk-button uk-button-default'>{item}:00</a>  ) : 
+                                            <div className="uk-alert-danger" data-uk-alert>
+                                                <a className="uk-alert-close" data-uk-close></a>
+                                                <p>Lo sentimos :( No hay horarios disponibles para este día</p>
+                                            </div>
                                         }
                                     </div>
-                                </div>  
+                                </div>  :
+                                null}
                                 
                                 <div className="uk-margin">
                                     <label className="uk-form-label" htmlFor="form-horizontal-select">Escoge tu Técnica</label>

@@ -25,23 +25,31 @@ router.post("/login", async(req,res) => {
 
 });
 
-router.post("/register",(req,res) => {
+router.post("/register", async(req,res) => {
   if(req.body.password !== req.body.confirmPass) return res.status(500).json({msg:"Las contraseñas no coinciden"});
 
   const salt = bcrypt.genSaltSync(256);
   const hashedPassword = bcrypt.hashSync(req.body.password,salt);
-  const name = req.body.name, 
+  let name = req.body.name, 
         email = req.body.email, 
         password = hashedPassword,
         phone = req.body.phone,
         rol = req.body.rol;
-  User.create({name,email,password,phone,rol})
+  
+  if(name === '' || phone === '' ) return res.status(500).json({msg:"Son necesarios todos los datos"});
+  if(phone.length < 8) return res.status(500).json({msg:"El formato del celular es incorrecto"});
+  phone = phone.substr(phone.length-8,8)
+  const user = await User.findOne({phone});
+  if(!user) {
+    User.create({name,email,password,phone,rol})
       .then(user => {
         res.status(201).json({user,msg:"Usuario registrado exitosamente"});
       })
       .catch(err => {
         res.status(500).json({msg:"El usuario no se pudo registrar"});
       })
+  }else return res.status(201).json({user, msg:"Usuario ya existente"});
+  
 });
 
 module.exports = router;

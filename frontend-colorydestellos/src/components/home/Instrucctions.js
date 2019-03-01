@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 export const Instruccions = () => (
     <div className="uk-section-muted uk-section uk-section-small" data-uk-scrollspy="target: [uk-scrollspy-class]; cls: uk-animation-fade; delay: false;">
@@ -45,7 +46,7 @@ export const Instruccions = () => (
                     </div>
                 </div>
 
-                <a className="uk-button uk-button-default uk-margin" href="/appoitment" data-uk-scroll="">Agenda tu cita</a>
+                <Link className="uk-button uk-button-default uk-margin" to="/appointment">Agenda tu cita</Link>
             </div>
             <div className="tm-section-title uk-position-center-left uk-position-medium uk-text-nowrap uk-visible@xl">
                 <div className="tm-rotate-180">Save up to 45%</div>

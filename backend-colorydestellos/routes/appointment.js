@@ -14,6 +14,7 @@ router.post("/create", (req,res) =>{
       price,
       phoneTo,
       serviceAt} = req.body;
+  if(client === '' || stylist === '' || technique === '' || appointment === '' || hour === '' || phoneTo === '' || serviceAt === '') return res.status(500).json({msg:"Todos los datos son necesarios"});
 
   appointment = moment(appointment).format('MM/DD/YYYY');
   let appointmentDone = {client,
