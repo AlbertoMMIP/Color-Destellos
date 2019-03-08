@@ -48,7 +48,7 @@ class Appointment extends Component{
                                     <div className="uk-panel">
                                         <div className="uk-margin-medium uk-width-large@m uk-text-left@m uk-text-center uk-panel uk-scrollspy-inview uk-animation-slide-left-medium" data-uk-scrollspy-class="" data-style="">
                                             <h2 className="uk-margin uk-h1"> Estilistas cercanas </h2>
-                                            <div className="uk-margin">The map will be here</div>
+                                            {/* <div className="uk-margin">The map will be here</div> */}
                                         </div>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@ class Appointment extends Component{
                                         <div className="uk-margin uk-text-center@m uk-text-center">
                                             <div className="uk-child-width-1-1">
                                                 {stylists.length > 0 ?
-                                                    stylists.map(styl => <StylistCard key={styl._id} user="CLIENT" img={styl.estilistaID.profile_url} name={styl.name} idStylist={styl.estilistaID._id} idUser={styl._id} make={this.showAppointment} /> ):
+                                                    stylists.map(styl => <StylistCard key={styl._id} user="CLIENT" img={styl.estilistaID.profile_url} name={styl.name} idStylist={styl.estilistaID._id} idUser={styl._id} make={this.showAppointment} book={styl.estilistaID.imgsBook_url} /> ):
                                                     <div><p>Sin Estilistas registradas</p></div>
                                                 }
                                            </div>

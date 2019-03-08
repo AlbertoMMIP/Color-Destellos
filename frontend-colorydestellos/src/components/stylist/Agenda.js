@@ -22,7 +22,6 @@ class Agenda extends Component{
         this.setState({name,estilistaID});
         getAppointmentbyStylist(estilistaID.replace('"',''))
             .then(appoints => {
-                appoints.data.appoints.forEach(item => console.log(item.client.name));
                 this.setState({appointments:appoints.data.appoints});
             })
 

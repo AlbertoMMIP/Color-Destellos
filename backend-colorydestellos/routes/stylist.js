@@ -54,7 +54,7 @@ router.patch("/converToStylist", (req,res) => {
 
 router.get("/getAll", (req,res) => {
   User.find({estilistaID:{$exists:true}},{rol:0,password:0,created_at:0,updated_at:0,__v:0})
-      .populate('estilistaID','profile_url')
+      .populate('estilistaID','profile_url imgsBook_url')
       .then(stylists => {
         res.status(200).json({stylists});
       })
