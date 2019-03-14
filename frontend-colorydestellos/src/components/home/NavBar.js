@@ -26,10 +26,11 @@ class NavBar extends Component {
 
         getInfoAppointment(e.target.ticket.value)
             .then(res => {
-
+                let fecha = res.data.appoints.appointment.toString().substring(0,10);
+                fecha = moment(fecha).format('LL');
                 UIkit.modal.alert(`<p>Bienvenida <strong>${res.data.appoints.client.name}</strong>, tu cita esta confirmada con la siguiente información:</p>
                     <p>Estilista: <strong>${res.data.appoints.stylist.name}</strong> </p>
-                    <p>El día: <strong>${moment(res.data.appoints.appointment).format("DD/MM/YYYY")}</strong></p>
+                    <p>El día: <strong>${fecha}</strong></p>
                     <p>Hora de inicio: <strong> ${res.data.appoints.hour}</strong> horas </p>
                     <p>Técnica seleccionada: <strong> ${res.data.appoints.technique.name} </strong> </p>
                     <div className="uk-grid-small" data-uk-grid>
@@ -85,9 +86,9 @@ class NavBar extends Component {
                                                     <li><a href="/#About"> <strong>Acerca de </strong> </a></li>
                                                     <li><NavLink to="/techniques"> <strong>Técnicas</strong> </NavLink>
                                                     </li>
-                                                    <li><NavLink to="/appointment"> <strong>Citas</strong> </NavLink>
+                                                    <li><NavLink to="/appointment"> <strong>Agendar</strong> </NavLink>
                                                     </li>
-                                                    <li><NavLink to="/login"><strong>Iniciar</strong> </NavLink></li>
+                                                    <li><NavLink to="/login"><strong>Ingresar</strong> </NavLink></li>
                                                 </ul>
                                         }
                                     </div>

@@ -104,7 +104,7 @@ class MakeAppointment extends Component {
                 });    
         horasLibres = horasDisponibles.filter(eleDis =>  !horasAgendadas.some(eleAgendada => eleDis === eleAgendada));
         showFreeHours = true;        
-        appointment.appointment = date;
+        appointment.appointment = dateString;
         this.setState({appointment,showFreeHours,horasLibres})
     }
 
@@ -128,7 +128,7 @@ class MakeAppointment extends Component {
         createUser(this.state.user)
             .then(user => {
                 appointment.client = user.data.user._id;
-                console.log(`The answer of the created an user id ${user.data.msg}`);
+                //console.log(`The answer of the created an user id ${user.data.msg}`);
                 this.setState({appointment});
                 createAppointment(this.state.appointment)
                     .then(appo => {

@@ -53,8 +53,8 @@ export const NavBarMovil = ({user,showAppointment}) => (
                                                 <li ><NavLink to="/">           <b>Inicio       </b></NavLink></li>
                                                 <li ><a href="/#About">         <b> Acerca de   </b></a></li>
                                                 <li ><NavLink to="/techniques"> <b>Técnicas     </b></NavLink></li>
-                                                <li ><NavLink to="/appointment"><b>Citas        </b></NavLink></li>
-                                                <li ><NavLink to="/login">      <b>Iniciar      </b></NavLink></li>
+                                                <li ><NavLink to="/appointment"><b>Agendar        </b></NavLink></li>
+                                                <li ><NavLink to="/login">      <b>Ingresar      </b></NavLink></li>
                                                 <li>
                                                     <form className="uk-search uk-search-navbar uk-width-1-1" onSubmit={showAppointment}>
                                                         <input id='js-modal-alert' className="uk-search-input" name="ticket" type="search"

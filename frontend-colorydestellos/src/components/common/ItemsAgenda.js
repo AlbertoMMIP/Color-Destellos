@@ -8,7 +8,8 @@ export  const ItemAgenda = ({appointment}) => (
                 <h3 className="uk-card-title">{appointment.client.name}</h3>
                 <h5>{appointment.client.phone}</h5>
                 <p>Técnica solicitada: {appointment.technique.name}</p>
-                <p>Para el día: {moment(appointment.appointment).format('DD/MM/YYYY')} </p>
+                <p>{appointment.appointment}</p>
+                <p>Para el día: {appointment.appointment ? moment(appointment.appointment.toString().substring(0,10)).format('LL') : null}  </p>
                 <p>A la hora: {appointment.hour} </p>
                 <p>Servicio en: {appointment.serviceAt} </p>
             </div>

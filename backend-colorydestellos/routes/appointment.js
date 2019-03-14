@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Appointment = require('../models/Appointment');
 const sms = require('../helpers/send_sms');
-const moment = require('moment');
 
 router.post("/create", (req,res) =>{
   let {client,
@@ -16,7 +15,7 @@ router.post("/create", (req,res) =>{
       serviceAt} = req.body;
   if(client === '' || stylist === '' || technique === '' || appointment === '' || hour === '' || phoneTo === '' || serviceAt === '') return res.status(500).json({msg:"Todos los datos son necesarios"});
 
-  appointment = moment(appointment).format('MM/DD/YYYY');
+  appointment = new Date(appointment);
   let appointmentDone = {client,
     stylist,
     technique,
