@@ -137,7 +137,7 @@ class MakeAppointment extends Component {
                     .catch(err => {
                         UIkit.notification({
                             status: "danger",
-                            message: "Error al crear la cita"
+                            message: "Error al crear la cita" + err.err
                         });
                     });
             })

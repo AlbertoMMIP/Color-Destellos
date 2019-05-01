@@ -24,3 +24,16 @@ exports.send = (options) => {
   return transport.sendMail(mailOptions);
 
 }
+
+exports.sendNewDate = (options) => {
+  const mailOptions =  {
+    subject: options.subject,
+    from: `<noreplay@colorydestellos.com>`,
+    to: options.email,
+    text: `Buen día ${options.name}. Acaban de agendar una nueva cita con Nº de tickect ${options.ticket} `,
+    html: `<p>Buen día ${options.name}. Acaban de agendar una nueva cita con Nº de tickect  <strong> ${options.ticket} </strong></p>`
+  };
+
+  return transport.sendMail(mailOptions);
+
+}

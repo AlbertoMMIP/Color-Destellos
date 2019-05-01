@@ -36,11 +36,14 @@ class Agenda extends Component{
                 <h3>Bienvenida {name.replace('"','')}</h3>
 
                 <h4>Tu agenda es la siguiente</h4>
-                <div className="uk-card uk-card-default uk-card-body uk-width-1-1@m">
-                    {appointments.length > 0 ?
-                        appointments.map((app,ind) => <ItemAgenda key={ind} appointment={app}/>)
-                     :
-                    null}
+                <div className="uk-section">
+                    <div className="uk-container">
+                        <div className="uk-child-width-1-3@m uk-grid-small uk-grid-match" data-uk-grid>
+                            {appointments.length > 0 ?
+                                appointments.map((app,ind) => <ItemAgenda key={ind} appointment={app}/>)
+                            :
+                        null}</div>
+                    </div>
                 </div>
             </div>
         );

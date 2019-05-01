@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Appointment = require('../models/Appointment');
 const sms = require('../helpers/send_sms');
+const mail = require('../helpers/mailer');
 
 router.post("/create", (req,res) =>{
   let {client,
@@ -40,15 +41,13 @@ router.post("/create", (req,res) =>{
                   to : phoneTo,
                   ticket:appoi.tickect
                 }
-                //sms.sendSms(options);
+                sms.sendSms(options);
                 res.status(201).json({appoi});
               })
               .catch(err => {
                   res.status(500).json({err, msg:"No se pudo registrar la técnica"});
               })
             } )
-
-  
 });
 
 router.get("/", (req,res) => {
