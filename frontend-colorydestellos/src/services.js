@@ -2,7 +2,7 @@ import axios from 'axios';
 import UIkit from 'uikit';
 
 
-//const base_url = 'http://localhost:3000/api';
+// const base_url = 'http://localhost:3001/api';
 const base_url = 'https://colorydestellos.herokuapp.com/api';
 
 export const login = (auth, history) => {

@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Appointment = require('../models/Appointment');
 const sms = require('../helpers/send_sms');
-const mail = require('../helpers/mailer');
+// const mail = require('../helpers/mailer');
 
 router.post("/create", (req,res) =>{
   let {client,

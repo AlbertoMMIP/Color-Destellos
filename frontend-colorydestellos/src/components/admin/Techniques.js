@@ -130,7 +130,7 @@ class Techniques extends  Component{
                 }
                 <div className="uk-section">
                     <div className="uk-container">
-                        <div className="uk-child-width-1-3@m uk-grid-small uk-grid-match" data-uk-grid>
+                        <div className="uk-child-width-1-3@m uk-grid-small" data-uk-grid>
                             {techniques.length > 0 ?
                                 techniques.map(technique => <TechniqueCard key={technique._id} technique={technique} />) :
                                 <p>Sin técnicas cargadas</p>

@@ -108,11 +108,28 @@ class MakeAppointment extends Component {
         this.setState({appointment,showFreeHours,horasLibres})
     }
 
+    validateForm = (target) => {
+        let msg = null
+        if (!target.name.value || target.name.value.length < 4) msg = "Ingresar un nombre valido";
+        if (!target.lastName.value || target.lastName.value.length < 4) msg = "Ingresar un apellido valido";
+        if (!target.phone.value || target.phone.value.length < 10) msg = "Ingresar un número de teléfono valido, debe iniciar con 55 y debe ser de 10 dígitos";
+        if (!target.technique.value) msg = "Ingresar una técnica valida";
+        if (!this.state.appointment.hour) msg = "Seleccione la fecha y hora de su cita";
+        return msg
+    }
+
     makeAppointment = (e) => {
         e.preventDefault();
+        const validateMsg = this.validateForm(e.target);
+        if (validateMsg) {
+            UIkit.notification({
+                status: "danger",
+                message: validateMsg
+            });
+            return;
+        }
         let {user,appointment,techniques,stylist} = this.state, obj = {};
-
-        user.name = e.target.name.value;
+        user.name = e.target.name.value + ' ' + e.target.lastName.value;
         user.phone = e.target.phone.value;
 
         appointment.stylist = this.props.idUser;
@@ -183,10 +200,17 @@ class MakeAppointment extends Component {
                                     </div>
                                 </div>
                                 <div className="uk-margin">
+                                    <label className="uk-form-label" htmlFor="form-horizontal-text">Apellidos</label>
+                                    <div className="uk-form-controls">
+                                        <input className="uk-input" id="form-horizontal-text" type="text" name="lastName"
+                                               placeholder="Apellido"/>
+                                    </div>
+                                </div>
+                                <div className="uk-margin">
                                     <label className="uk-form-label" >Celular</label>
                                     <div className="uk-form-controls">
                                         <input className="uk-input" type="number" name="phone"
-                                               placeholder="044 55 0000 0000"/>
+                                               placeholder="55 0000 0000"/>
                                     </div>
                                 </div>
                                 {/* <div className="uk-margin">
@@ -208,9 +232,9 @@ class MakeAppointment extends Component {
                                     <label className="uk-form-label">Horario Disponible</label>
                                     <div className="uk-form-controls" id="divHorasLibres">
                                         {horasLibres.length > 0 ?
-                                            horasLibres.map((item,index) => <a id={index} key={index} onClick={this.onChangeTime} className='uk-button uk-button-default'>{item}:00</a>  ) : 
+                                            horasLibres.map((item,index) => <span id={index} key={index} onClick={this.onChangeTime} className='uk-button uk-button-default'>{item}:00</span>  ) : 
                                             <div className="uk-alert-danger" data-uk-alert>
-                                                <a className="uk-alert-close" data-uk-close></a>
+                                                <span className="uk-alert-close" data-uk-close></span>
                                                 <p>Lo sentimos :( No hay horarios disponibles para este día</p>
                                             </div>
                                         }
@@ -231,8 +255,8 @@ class MakeAppointment extends Component {
                                 </div>
                                 <div className="uk-margin">
                                     <div className="uk-form-label">Ubicación</div>
-                                    <div className="uk-form-controls uk-form-controls-text">
-                                        <label><input className="uk-radio" type="radio" name="radio1"/> En Establecimiento</label><br/>
+                                    <div className="uk-form-controls uk-form-controls-text disabled">
+                                        <label><input className="uk-radio" type="radio" name="radio1" value={true}/> En Establecimiento</label><br/>
                                         <label><input className="uk-radio" type="radio" name="radio1"/> A domicilio</label>
                                     </div>
                                 </div>
@@ -245,7 +269,7 @@ class MakeAppointment extends Component {
                             null}
                             {showResult ?
                                 <div className="uk-alert-primary" data-uk-alert>
-                                    <a className="uk-alert-close" data-uk-close />
+                                    <span className="uk-alert-close" data-uk-close />
                                     <p>Su cita se generó correctamente</p>
                                     <p>Podrá consultarla con el siguiente número de ticket {ticket}</p>
                                 </div> :
