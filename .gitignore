@@ -3,4 +3,3 @@ node-modules
 .env
 .DS_Store
 package-lock.json
-frontend-colorydestellos/yarn.lock
